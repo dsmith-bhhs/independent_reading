@@ -1,0 +1,695 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<script src="./support.js"></script>
+</head>
+<body>
+<x-dc>
+<helmet>
+<link rel="preconnect" href="https://fonts.googleapis.com" />
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin="" />
+<link href="https://fonts.googleapis.com/css2?family=Source+Serif+4:ital,opsz,wght@0,8..60,400;0,8..60,600;0,8..60,700;1,8..60,400&amp;family=Karla:wght@400;500;600;700&amp;display=swap" rel="stylesheet" />
+<style>
+  * { box-sizing: border-box; }
+  html, body { margin: 0; background: #fdfcfa; font-family: Karla, system-ui, sans-serif; -webkit-font-smoothing: antialiased; }
+  a { color: #9c1918; text-decoration: underline; text-underline-offset: 2px; }
+  a:hover { color: #002855; }
+  input, button { font-family: inherit; }
+  button { cursor: pointer; }
+  ::-webkit-scrollbar { width: 10px; height: 10px; }
+  ::-webkit-scrollbar-thumb { background: #cfc8bb; border-radius: 10px; }
+  ::-webkit-scrollbar-track { background: transparent; }
+  @keyframes fadeUp { from { opacity: 0; transform: translateY(10px); } to { opacity: 1; transform: none; } }
+</style>
+</helmet>
+
+<!-- ================= LANDING ================= -->
+<sc-if value="{{ isLanding }}" hint-placeholder-val="{{ true }}">
+<div style="min-height: 100vh; display: flex; flex-direction: column; background: #fdfcfa">
+  <div style="background: #002855; padding: 40px 8vw 48px">
+    <div style="display: flex; align-items: center; gap: 22px; margin-bottom: 26px; flex-wrap: wrap">
+      <div style="display: flex; align-items: center; gap: 12px">
+        <div style="height: 52px; width: 50px; flex: 0 0 50px; background-image: url(assets/shield-hcc.png); background-size: contain; background-position: center; background-repeat: no-repeat"></div>
+        <div style="height: 52px; width: 50px; flex: 0 0 50px; background-image: url(assets/shield-bhhs.png); background-size: contain; background-position: center; background-repeat: no-repeat"></div>
+      </div>
+      <span style="color: #fff; font-size: 17px; letter-spacing: 0.13em; text-transform: uppercase; font-weight: 700">Byram Hills Central School District</span>
+    </div>
+    <div style="{{ headerGridStyle }}">
+      <div>
+        <h1 style="font-family: 'Source Serif 4', Georgia, serif; font-size: 60px; line-height: 1.02; margin: 0; color: #fff; font-weight: 600; letter-spacing: -0.02em">Independent Reading</h1>
+        <p style="margin: 18px 0 0; max-width: 420px; font-size: 17px; line-height: 1.55; color: #cfdae7; text-wrap: pretty">Two books over the summer, and reading that keeps going all year — chosen by you.</p>
+      </div>
+      <div style="border-left: 2px solid #9c1918; padding: 4px 0 4px 26px; max-width: 560px">
+        <div style="font-size: 10.5px; letter-spacing: 0.16em; text-transform: uppercase; color: #f0b8b7; font-weight: 700; margin-bottom: 12px">Why we do this</div>
+        <p style="margin: 0 0 13px; font-size: 16.5px; line-height: 1.6; color: #fff; text-wrap: pretty">While shared texts typically populate the landscape of the secondary English classroom, recreational reading plays an equally important role in developing <em>critical thinking, empathy, and self-awareness</em>.</p>
+        <p style="margin: 0; font-size: 16.5px; line-height: 1.6; color: #fff; text-wrap: pretty">During the academic year, students make quarterly independent reading selections. Over the summer, students should continue to immerse themselves in high-interest reading material.</p>
+      </div>
+    </div>
+  </div>
+
+  <div style="{{ tileGridStyle }}">
+    <sc-for list="{{ schoolCards }}" as="s" hint-placeholder-count="2">
+      <button onClick="{{ s.on }}" style="{{ s.tileStyle }}">
+        <span style="{{ s.tileScrim }}"></span>
+        <span style="position: relative; display: flex; flex-direction: column; gap: 9px; align-items: flex-start; pointer-events: none">
+          <span style="font-size: 11px; letter-spacing: 0.16em; text-transform: uppercase; color: #fff; font-weight: 700; background: #9c1918; padding: 4px 10px; border-radius: 2px">{{ s.grades }}</span>
+          <span style="font-family: 'Source Serif 4', Georgia, serif; font-size: 32px; line-height: 1.12; color: #fff; font-weight: 600; letter-spacing: -0.01em; text-shadow: 0 2px 14px rgba(0,20,45,0.6)">{{ s.name }}</span>
+          <span style="font-size: 14.5px; line-height: 1.55; color: #e6ecf4; max-width: 400px; text-shadow: 0 1px 10px rgba(0,20,45,0.7)">{{ s.blurb }}</span>
+          <span style="display: inline-flex; align-items: center; gap: 8px; margin-top: 8px; font-size: 13.5px; color: #fff; font-weight: 700; border-bottom: 2px solid rgba(255,255,255,0.5); padding-bottom: 3px">{{ s.cta }} →</span>
+        </span>
+      </button>
+    </sc-for>
+  </div>
+
+  <div style="padding: 50px 8vw 74px; max-width: 1180px; display: grid; grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); gap: 44px">
+    <div>
+      <div style="font-size: 11px; letter-spacing: 0.14em; text-transform: uppercase; color: #9c1918; font-weight: 700; margin-bottom: 12px">What's expected</div>
+      <p style="margin: 0 0 12px; font-size: 14.5px; line-height: 1.6; color: #454b56; text-wrap: pretty">Read a <strong>minimum of two books over the summer</strong>. You'll talk about them in September — there's nothing to write.</p>
+      <p style="margin: 0; font-size: 14.5px; line-height: 1.6; color: #454b56; text-wrap: pretty">Summer is the starting line, not the finish. You're expected to keep reading independently all year long, so come back whenever you need your next book.</p>
+    </div>
+    <div>
+      <div style="font-size: 11px; letter-spacing: 0.14em; text-transform: uppercase; color: #9c1918; font-weight: 700; margin-bottom: 12px">Choosing your own</div>
+      <p style="margin: 0; font-size: 14.5px; line-height: 1.6; color: #454b56; text-wrap: pretty">You're welcome to read something that isn't on our lists. When you do, choose it together with a family member — and talk it over with a teacher or librarian.</p>
+    </div>
+  </div>
+</div>
+</sc-if>
+
+<!-- ================= GRADE GATE ================= -->
+<sc-if value="{{ isGrade }}" hint-placeholder-val="{{ false }}">
+<div style="min-height: 100vh; background: #f6f2ea; display: flex; flex-direction: column">
+  <div style="background: #002855; padding: 22px 8vw; display: flex; align-items: center; justify-content: space-between">
+    <div style="display: flex; align-items: center; gap: 13px">
+      <sc-if value="{{ showShield }}" hint-placeholder-val="{{ false }}">
+        <div style="{{ shieldStyle }}"></div>
+      </sc-if>
+      <sc-if value="{{ showFallbackMark }}" hint-placeholder-val="{{ false }}">
+        <div style="width: 30px; height: 30px; border: 2px solid #fff; border-radius: 2px; display: flex; align-items: center; justify-content: center; font-family: 'Source Serif 4', serif; color: #fff; font-size: 15px; font-weight: 700">B</div>
+      </sc-if>
+      <span style="color: #fff; font-family: 'Source Serif 4', Georgia, serif; font-size: 17px; font-weight: 600">H. C. Crittenden Middle School</span>
+    </div>
+    <button onClick="{{ goLanding }}" style="background: none; border: none; color: #9fb3cc; font-size: 13px; font-weight: 600; text-decoration: underline; text-underline-offset: 3px">← not my school</button>
+  </div>
+  <div style="flex: 1; display: flex; flex-direction: column; justify-content: center; padding: 64px 8vw 84px; max-width: 1240px; animation: fadeUp 260ms ease-out">
+    <div style="font-size: 11px; letter-spacing: 0.16em; text-transform: uppercase; color: #9c1918; font-weight: 700; margin-bottom: 14px">One more thing</div>
+    <h2 style="font-family: 'Source Serif 4', Georgia, serif; font-size: 46px; line-height: 1.08; margin: 0 0 12px; color: #101418; font-weight: 600; letter-spacing: -0.015em; max-width: 760px">Which grade are you entering this fall?</h2>
+    <p style="margin: 0 0 40px; font-size: 16.5px; line-height: 1.55; color: #5f6672; max-width: 540px; text-wrap: pretty">Your teachers recommend different titles for each grade, so this makes sure you only see the ones meant for you.</p>
+    <div style="{{ gradeGridStyle }}">
+      <sc-for list="{{ gradeCards }}" as="g" hint-placeholder-count="3">
+        <button onClick="{{ g.on }}" style="{{ g.cardStyle }}" style-hover="border-color: #002855; box-shadow: 0 22px 44px -26px rgba(16,20,24,0.5)">
+          <span style="{{ g.stackStyle }}">
+            <sc-for list="{{ g.covers }}" as="cv" hint-placeholder-count="3">
+              <span style="{{ cv.style }}"></span>
+            </sc-for>
+          </span>
+          <span style="display: flex; flex-direction: column; gap: 5px; padding: 22px 24px 24px; align-items: flex-start">
+            <span style="font-family: 'Source Serif 4', Georgia, serif; font-size: 30px; line-height: 1; color: #101418; font-weight: 600; letter-spacing: -0.01em">{{ g.num }}</span>
+            <span style="font-size: 14px; color: #6b7280">{{ g.label }}</span>
+            <span style="display: inline-flex; align-items: center; gap: 7px; margin-top: 12px; font-size: 13px; color: #9c1918; font-weight: 700">{{ g.cta }} →</span>
+          </span>
+        </button>
+      </sc-for>
+    </div>
+  </div>
+</div>
+</sc-if>
+
+<!-- ================= SHELF ================= -->
+<sc-if value="{{ isShelf }}" hint-placeholder-val="{{ false }}">
+<div style="min-height: 100vh; display: flex; flex-direction: column; background: #fdfcfa">
+  <div style="background: #002855; padding: 15px 30px; display: flex; align-items: center; justify-content: space-between; gap: 24px; flex-wrap: wrap">
+    <div style="display: flex; align-items: center; gap: 14px">
+      <sc-if value="{{ showShield }}" hint-placeholder-val="{{ false }}">
+        <div style="{{ shieldStyle }}"></div>
+      </sc-if>
+      <sc-if value="{{ showFallbackMark }}" hint-placeholder-val="{{ false }}">
+        <div style="width: 32px; height: 32px; border: 2px solid #fff; border-radius: 2px; display: flex; align-items: center; justify-content: center; font-family: 'Source Serif 4', serif; color: #fff; font-size: 16px; font-weight: 700">B</div>
+      </sc-if>
+      <div>
+        <div style="color: #fff; font-family: 'Source Serif 4', Georgia, serif; font-size: 18px; font-weight: 600">Independent Reading</div>
+        <div style="color: #9fb3cc; font-size: 11.5px; letter-spacing: 0.08em; text-transform: uppercase; font-weight: 600">{{ contextLabel }}</div>
+      </div>
+    </div>
+    <div style="display: flex; align-items: center; gap: 18px">
+      <sc-if value="{{ canChangeGrade }}" hint-placeholder-val="{{ false }}">
+        <button onClick="{{ goGrade }}" style="background: rgba(255,255,255,0.1); border: none; color: #fff; font-size: 12.5px; font-weight: 700; padding: 8px 14px; border-radius: 3px">Change grade</button>
+      </sc-if>
+      <button onClick="{{ goLanding }}" style="background: none; border: none; color: #9fb3cc; font-size: 12.5px; font-weight: 600; text-decoration: underline; text-underline-offset: 3px">Start over</button>
+    </div>
+  </div>
+
+  <sc-if value="{{ isHS }}" hint-placeholder-val="{{ false }}">
+    <div style="background: #9c1918; padding: 28px 30px 30px; color: #fff">
+      <div style="display: flex; align-items: baseline; gap: 12px; flex-wrap: wrap; margin-bottom: 4px">
+        <span style="font-size: 11px; letter-spacing: 0.16em; text-transform: uppercase; font-weight: 700; color: #f6d9d8">Required first</span>
+      </div>
+      <h2 style="font-family: 'Source Serif 4', Georgia, serif; font-size: 27px; line-height: 1.15; margin: 8px 0 6px; font-weight: 600">In an advanced course? Start with your required text.</h2>
+      <p style="margin: 0 0 22px; font-size: 15px; line-height: 1.55; color: #f6d9d8; max-width: 640px; text-wrap: pretty">These students read the required text <strong style="color: #fff">plus a minimum of one</strong> additional independent selection from the list below — not two.</p>
+      <div style="{{ reqGridStyle }}">
+        <sc-for list="{{ requiredTexts }}" as="r" hint-placeholder-count="2">
+          <div style="display: flex; gap: 18px; align-items: flex-start; background: rgba(0,0,0,0.16); border-radius: 5px; padding: 18px 20px">
+            <div style="{{ r.coverStyle }}"></div>
+            <div style="flex: 1; min-width: 0">
+              <div style="font-size: 10.5px; letter-spacing: 0.14em; text-transform: uppercase; font-weight: 700; color: #fff; line-height: 1.45">{{ r.who }}</div>
+              <div style="display: flex; flex-direction: column; gap: 3px; margin-top: 6px">
+                <sc-for list="{{ r.courses }}" as="cs" hint-placeholder-count="1">
+                  <div style="font-size: 13px; line-height: 1.4; color: #f6d9d8; font-weight: 600">{{ cs }}</div>
+                </sc-for>
+              </div>
+              <div style="font-family: 'Source Serif 4', Georgia, serif; font-size: 21px; line-height: 1.15; margin-top: 8px; font-weight: 600; font-style: italic">{{ r.title }}</div>
+              <div style="font-size: 13.5px; margin-top: 4px; color: #f6d9d8">{{ r.author }}</div>
+              <p style="margin: 11px 0 0; font-size: 13px; line-height: 1.55; color: #fbeceb; text-wrap: pretty">{{ r.desc }}</p>
+            </div>
+          </div>
+        </sc-for>
+      </div>
+    </div>
+  </sc-if>
+
+  <div style="padding: 14px 30px; background: #f6f2ea; border-bottom: 1px solid #e2ddd3; display: flex; align-items: center; gap: 16px; flex-wrap: wrap">
+    <div style="position: relative; flex: 1; min-width: 260px; max-width: 520px">
+      <input value="{{ q }}" onInput="{{ onQ }}" placeholder="Search a title, an author, or a word like &quot;survival&quot;" style="width: 100%; padding: 11px 14px 11px 38px; border: 1px solid #d3ccbe; border-radius: 4px; background: #fff; font-size: 14.5px; color: #101418; outline: none" />
+      <span style="position: absolute; left: 13px; top: 11px; color: #9aa1ac; font-size: 15px">⌕</span>
+    </div>
+    <div style="font-size: 13.5px; color: #5f6672; font-variant-numeric: tabular-nums">{{ resultLabel }}</div>
+    <button onClick="{{ resetAll }}" style="border: none; background: none; color: #9c1918; font-size: 13px; font-weight: 600; padding: 4px 2px; text-decoration: underline; text-underline-offset: 3px">Clear all</button>
+  </div>
+
+  <div style="{{ shellStyle }}">
+
+    <div style="{{ leftRailStyle }}">
+      <sc-if value="{{ isNarrow }}" hint-placeholder-val="{{ false }}">
+        <button onClick="{{ toggleFilters }}" style="{{ filterToggleStyle }}">{{ filterToggleLabel }}</button>
+      </sc-if>
+      <sc-if value="{{ filtersOpen }}" hint-placeholder-val="{{ true }}">
+      <div style="display: flex; flex-direction: column; gap: 26px">
+      <div style="display: flex; flex-direction: column; gap: 9px">
+        <div style="font-size: 10.5px; letter-spacing: 0.14em; text-transform: uppercase; color: #9c1918; font-weight: 700">How do you want to feel?</div>
+        <sc-for list="{{ moodChips }}" as="c" hint-placeholder-count="6">
+          <button onClick="{{ c.on }}" style="{{ c.style }}">{{ c.label }}</button>
+        </sc-for>
+      </div>
+      <div style="display: flex; flex-direction: column; gap: 9px">
+        <div style="font-size: 10.5px; letter-spacing: 0.14em; text-transform: uppercase; color: #9c1918; font-weight: 700">Interests</div>
+        <sc-for list="{{ intChips }}" as="c" hint-placeholder-count="10">
+          <button onClick="{{ c.on }}" style="{{ c.style }}">{{ c.label }}</button>
+        </sc-for>
+      </div>
+      <div style="display: flex; flex-direction: column; gap: 9px">
+        <div style="font-size: 10.5px; letter-spacing: 0.14em; text-transform: uppercase; color: #9c1918; font-weight: 700">Genre</div>
+        <sc-for list="{{ genreChips }}" as="c" hint-placeholder-count="8">
+          <button onClick="{{ c.on }}" style="{{ c.style }}">{{ c.label }}</button>
+        </sc-for>
+      </div>
+      <sc-if value="{{ hasFlagChips }}" hint-placeholder-val="{{ true }}">
+        <div style="display: flex; flex-direction: column; gap: 9px">
+          <div style="font-size: 10.5px; letter-spacing: 0.14em; text-transform: uppercase; color: #9c1918; font-weight: 700">Also</div>
+          <sc-for list="{{ flagChips }}" as="c" hint-placeholder-count="4">
+            <button onClick="{{ c.on }}" style="{{ c.style }}">{{ c.label }}</button>
+          </sc-for>
+        </div>
+      </sc-if>
+      </div>
+      </sc-if>
+    </div>
+
+    <div style="{{ gridColStyle }}">
+      <sc-if value="{{ hasResults }}" hint-placeholder-val="{{ true }}">
+        <div style="display: grid; grid-template-columns: repeat(auto-fill, minmax(128px, 1fr)); gap: 24px 20px">
+          <sc-for list="{{ cards }}" as="b" hint-placeholder-count="12">
+            <div onClick="{{ b.on }}" style="{{ b.wrapStyle }}">
+              <div style="{{ b.coverStyle }}">
+                <span style="{{ b.initialStyle }}">{{ b.initial }}</span>
+                <span style="{{ b.badgeStyle }}">{{ b.badge }}</span>
+              </div>
+              <div style="font-family: 'Source Serif 4', Georgia, serif; font-size: 13.5px; line-height: 1.28; color: #101418; margin-top: 9px; font-weight: 600">{{ b.t }}</div>
+              <div style="font-size: 11.5px; color: #7a808b; margin-top: 2px">{{ b.a }}</div>
+            </div>
+          </sc-for>
+        </div>
+        <sc-if value="{{ hasMore }}" hint-placeholder-val="{{ false }}">
+          <button onClick="{{ showMore }}" style="margin: 30px auto 4px; display: block; padding: 11px 24px; border: 1px solid #d3ccbe; background: #fff; border-radius: 4px; font-size: 13.5px; font-weight: 600; color: #002855">Show more titles</button>
+        </sc-if>
+      </sc-if>
+      <sc-if value="{{ noResults }}" hint-placeholder-val="{{ false }}">
+        <div style="padding: 90px 20px; text-align: center">
+          <div style="font-family: 'Source Serif 4', Georgia, serif; font-size: 21px; color: #101418">Nothing matches all of those yet.</div>
+          <div style="font-size: 14px; color: #6b7280; margin-top: 8px; line-height: 1.6">Try removing a filter — or email the librarian for a title that fits.</div>
+        </div>
+      </sc-if>
+    </div>
+
+    <div style="{{ rightRailStyle }}">
+      <sc-if value="{{ sel }}" hint-placeholder-val="{{ null }}">
+        <div style="padding: 24px 24px 28px; display: flex; flex-direction: column; gap: 15px; border-bottom: 1px solid #e2ddd3">
+          <div style="display: flex; gap: 15px; align-items: flex-start">
+            <div style="{{ selCoverStyle }}"></div>
+            <div style="flex: 1">
+              <div style="font-family: 'Source Serif 4', Georgia, serif; font-size: 20px; line-height: 1.18; color: #101418; font-weight: 600">{{ selT }}</div>
+              <div style="font-size: 13px; color: #7a808b; margin-top: 4px">{{ selA }}</div>
+              <div style="font-size: 11.5px; color: #002855; margin-top: 9px; font-weight: 700; letter-spacing: 0.04em; text-transform: uppercase; line-height: 1.4">{{ selMeta }}</div>
+            </div>
+          </div>
+          <p style="margin: 0; font-size: 13.5px; line-height: 1.6; color: #454b56; text-wrap: pretty">{{ selDesc }}</p>
+          <div style="display: flex; gap: 6px; flex-wrap: wrap">
+            <sc-for list="{{ selTags }}" as="tg" hint-placeholder-count="3">
+              <span style="font-size: 11px; padding: 3px 9px; border: 1px solid #d3ccbe; border-radius: 20px; color: #5f6672; background: #fff">{{ tg }}</span>
+            </sc-for>
+          </div>
+          <div style="display: flex; gap: 7px; margin-top: 2px">
+            <sc-for list="{{ shelfButtons }}" as="sb" hint-placeholder-count="3">
+              <button onClick="{{ sb.on }}" style="{{ sb.style }}">{{ sb.label }}</button>
+            </sc-for>
+          </div>
+        </div>
+        <div style="padding: 22px 24px; border-bottom: 1px solid #e2ddd3">
+          <div style="font-size: 10.5px; letter-spacing: 0.14em; text-transform: uppercase; color: #9c1918; font-weight: 700; margin-bottom: 13px">If you like this, try</div>
+          <div style="display: flex; flex-direction: column; gap: 13px">
+            <sc-for list="{{ similar }}" as="s" hint-placeholder-count="3">
+              <div onClick="{{ s.on }}" style="display: flex; gap: 12px; align-items: flex-start; cursor: pointer; padding: 7px; margin: -7px; border-radius: 4px" style-hover="background: #efe9de">
+                <div style="{{ s.coverStyle }}"></div>
+                <div style="flex: 1">
+                  <div style="font-family: 'Source Serif 4', Georgia, serif; font-size: 13.5px; line-height: 1.25; color: #101418; font-weight: 600">{{ s.t }}</div>
+                  <div style="font-size: 11.5px; color: #7a808b; margin-top: 1px">{{ s.a }}</div>
+                  <div style="font-size: 11px; color: #9c1918; margin-top: 4px; line-height: 1.35">{{ s.why }}</div>
+                </div>
+              </div>
+            </sc-for>
+          </div>
+        </div>
+      </sc-if>
+      <sc-if value="{{ noSel }}" hint-placeholder-val="{{ true }}">
+        <div style="padding: 44px 26px; text-align: center; border-bottom: 1px solid #e2ddd3">
+          <div style="font-family: 'Source Serif 4', Georgia, serif; font-size: 17.5px; color: #101418; line-height: 1.35">Pick any cover to read what it's about.</div>
+          <div style="font-size: 13px; color: #7a808b; margin-top: 9px; line-height: 1.55">You'll also see similar titles, and why they match.</div>
+        </div>
+      </sc-if>
+
+      <div style="padding: 24px">
+        <div style="display: flex; align-items: baseline; justify-content: space-between; margin-bottom: 13px">
+          <div style="font-size: 10.5px; letter-spacing: 0.14em; text-transform: uppercase; color: #9c1918; font-weight: 700">My shelf</div>
+          <div style="font-size: 11.5px; color: #7a808b">saved on this device</div>
+        </div>
+        <div style="background: #fff; border: 1px solid #e2ddd3; border-radius: 5px; padding: 15px 16px; margin-bottom: 18px">
+          <div style="display: flex; justify-content: space-between; align-items: baseline; font-size: 13px; color: #454b56">
+            <span style="font-weight: 600">{{ goalLabel }}</span>
+            <span style="font-variant-numeric: tabular-nums; color: #7a808b">{{ goalCount }}</span>
+          </div>
+          <div style="height: 7px; background: #eae4d9; border-radius: 20px; margin-top: 10px; overflow: hidden">
+            <div style="{{ goalBarStyle }}"></div>
+          </div>
+        </div>
+        <div style="display: flex; flex-direction: column; gap: 17px">
+          <sc-for list="{{ shelfGroups }}" as="grp" hint-placeholder-count="3">
+            <div>
+              <div style="font-size: 12px; font-weight: 700; color: #002855; margin-bottom: 7px">{{ grp.label }}</div>
+              <sc-if value="{{ grp.empty }}" hint-placeholder-val="{{ true }}">
+                <div style="font-size: 12.5px; color: #9aa1ac; font-style: italic">{{ grp.hint }}</div>
+              </sc-if>
+              <div style="display: flex; flex-direction: column; gap: 5px">
+                <sc-for list="{{ grp.items }}" as="it" hint-placeholder-count="0">
+                  <div style="display: flex; align-items: center; gap: 8px; font-size: 12.5px; color: #454b56">
+                    <span onClick="{{ it.on }}" style="cursor: pointer; flex: 1; line-height: 1.35" style-hover="color: #9c1918">{{ it.t }}</span>
+                    <button onClick="{{ it.remove }}" style="border: none; background: none; color: #b0b6c0; font-size: 15px; line-height: 1; padding: 2px 4px" style-hover="color: #9c1918">×</button>
+                  </div>
+                </sc-for>
+              </div>
+            </div>
+          </sc-for>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div style="background: #002855; padding: 30px 30px 34px; display: grid; grid-template-columns: repeat(auto-fit, minmax(240px, 1fr)); gap: 40px">
+    <div>
+      <div style="font-size: 10.5px; letter-spacing: 0.14em; text-transform: uppercase; color: #9fb3cc; font-weight: 700; margin-bottom: 11px">Get the book</div>
+      <div style="display: flex; flex-direction: column; gap: 6px; font-size: 13.5px; line-height: 1.5">
+        <a href="https://search.follettsoftware.com/metasearch/ui/47192" target="_blank" style="color: #fff">FollettShelf eBooks →</a>
+        <a href="https://soraapp.com/welcome/login/200158" target="_blank" style="color: #fff">Sora app →</a>
+        <span style="color: #9fb3cc; font-size: 12.5px; line-height: 1.5">Use your school username and password. Quantities are limited.</span>
+      </div>
+    </div>
+    <div>
+      <div style="font-size: 10.5px; letter-spacing: 0.14em; text-transform: uppercase; color: #9fb3cc; font-weight: 700; margin-bottom: 11px">{{ extLabel }}</div>
+      <div style="display: flex; flex-direction: column; gap: 6px; font-size: 13.5px; line-height: 1.5">
+        <sc-for list="{{ extLinks }}" as="lk" hint-placeholder-count="3">
+          <a href="{{ lk.href }}" target="_blank" style="color: #fff">{{ lk.label }} →</a>
+        </sc-for>
+      </div>
+    </div>
+    <div>
+      <div style="font-size: 10.5px; letter-spacing: 0.14em; text-transform: uppercase; color: #9fb3cc; font-weight: 700; margin-bottom: 11px">What to expect</div>
+      <div style="font-size: 13.5px; line-height: 1.55; color: #dfe6ef">{{ noteBody }}</div>
+      <div style="font-size: 12.5px; line-height: 1.55; color: #9fb3cc; margin-top: 10px">Questions? Email <a href="mailto:bbarthelmes@byramhills.net" style="color: #fff">bbarthelmes@byramhills.net</a></div>
+    </div>
+  </div>
+</div>
+</sc-if>
+
+</x-dc>
+<script type="text/x-dc" data-dc-script data-props="{&quot;readingGoal&quot;:{&quot;editor&quot;:&quot;int&quot;,&quot;default&quot;:10,&quot;min&quot;:1,&quot;max&quot;:12,&quot;tsType&quot;:&quot;number&quot;,&quot;section&quot;:&quot;Expectations&quot;},&quot;similarCount&quot;:{&quot;editor&quot;:&quot;int&quot;,&quot;default&quot;:3,&quot;min&quot;:2,&quot;max&quot;:6,&quot;tsType&quot;:&quot;number&quot;,&quot;section&quot;:&quot;Recommendations&quot;},&quot;scrimStrength&quot;:{&quot;editor&quot;:&quot;range&quot;,&quot;default&quot;:0.62,&quot;min&quot;:0.2,&quot;max&quot;:0.9,&quot;step&quot;:0.02,&quot;tsType&quot;:&quot;number&quot;,&quot;section&quot;:&quot;Landing page&quot;}}">
+const MOODS = ['Makes me laugh','Keeps me up at night','Makes me think','Breaks my heart','Sweeps me away','Feels like my life'];
+const MS_LINKS = [
+  { label: 'YALSA award-winning book lists', href: 'http://www.ala.org/yalsa/bookawards/booklists/members' },
+  { label: 'New titles at the HCC library', href: 'https://docs.google.com/presentation/d/1haIIWKjltXuiqfS8AqZK0N1917N7U6aVgIl1ouP7lA8/edit' }
+];
+const HS_LINKS = [
+  { label: 'Outstanding Books for the College Bound', href: 'https://www.ala.org/yalsa/outstanding-books-college-bound' },
+  { label: "College Board's 101 books for the college bound", href: 'https://www.listchallenges.com/college-boards-101-books-for-the-college-bound' },
+  { label: 'The Great American Read checklist (PDF)', href: 'https://bento.cdn.pbs.org/hostedbento-prod/filer_public/gar-phase-2/assets/TGAR_BookChecklist_2018.pdf' }
+];
+const GRADE_BLURB = { 6: 'Entering sixth grade', 7: 'Entering seventh grade', 8: 'Entering eighth grade' };
+const SHIELDS = { ms: 'assets/shield-hcc.png', hs: 'assets/shield-bhhs.png' };
+const SHELF_DEFS = [
+  { v: 'want', label: 'Want to read', hint: 'Nothing saved yet.' },
+  { v: 'reading', label: 'Reading now', hint: 'Add a book when you start it.' },
+  { v: 'done', label: 'Finished', hint: 'Your finished books land here.' }
+];
+
+class Component extends DCLogic {
+  state = {
+    books: [], screen: 'landing', school: null, grade: null,
+    q: '', fMood: [], fInt: [], fGenre: [], flags: [], sel: null, limit: 36, shelf: {},
+    vw: typeof window !== 'undefined' ? window.innerWidth : 1280, filtersOpen: true,
+    shields: { ms: false, hs: false }
+  };
+
+  componentDidMount() {
+    fetch('books.json').then(r => r.json()).then(books => {
+      let shelf = {};
+      try { shelf = JSON.parse(localStorage.getItem('bh-ir-shelf') || '{}'); } catch (e) {}
+      this.setState({ books, shelf });
+    }).catch(() => {});
+    this._onResize = () => {
+      const vw = window.innerWidth;
+      if (Math.abs(vw - this.state.vw) > 8) this.setState({ vw, filtersOpen: vw >= 1000 });
+    };
+    window.addEventListener('resize', this._onResize);
+    Object.keys(SHIELDS).forEach(k => {
+      const probe = new Image();
+      probe.onload = () => this.setState(st => ({ shields: { ...st.shields, [k]: true } }));
+      probe.onerror = () => {};
+      probe.src = SHIELDS[k];
+    });
+    this.setState({ vw: window.innerWidth, filtersOpen: window.innerWidth >= 1000 });
+  }
+
+  componentWillUnmount() {
+    if (this._onResize) window.removeEventListener('resize', this._onResize);
+  }
+
+  pool() {
+    const s = this.state;
+    if (s.school === 'hs') return s.books.filter(b => b.band !== 'ms');
+    if (s.grade) return s.books.filter(b => b.g.includes(s.grade));
+    return s.books.filter(b => b.band !== 'hs');
+  }
+
+  toggle(key, v) {
+    const cur = this.state[key];
+    this.setState({ [key]: cur.includes(v) ? cur.filter(x => x !== v) : cur.concat([v]), limit: 36 });
+  }
+
+  score(a, b) {
+    let s = 0;
+    if (a.genre === b.genre) s += 3;
+    s += 2 * a.int.filter(x => b.int.includes(x)).length;
+    s += a.mood.filter(x => b.mood.includes(x)).length;
+    if (!!a.ch === !!b.ch) s += 0.5;
+    return s;
+  }
+
+  reason(a, b) {
+    const i = a.int.filter(x => b.int.includes(x));
+    const m = a.mood.filter(x => b.mood.includes(x));
+    const bits = [];
+    if (i.length) bits.push(i.slice(0, 2).map(x => x.toLowerCase()).join(' + '));
+    if (m.length) bits.push(m[0].toLowerCase());
+    if (!bits.length && a.genre === b.genre) bits.push(a.genre.toLowerCase());
+    return bits.join(' · ');
+  }
+
+  chip(active) {
+    const base = 'text-align:left;border-radius:3px;font-size:12.5px;font-weight:600;padding:7px 11px;cursor:pointer;line-height:1.3;';
+    return active
+      ? base + 'background:#002855;color:#fff;border:1px solid #002855;'
+      : base + 'background:#fff;color:#454b56;border:1px solid #ddd6c8;';
+  }
+
+  coverBox(b, w, h) {
+    const box = 'width:' + w + 'px;height:' + h + 'px;flex:0 0 ' + w + 'px;border-radius:2px;background-size:cover;background-position:center;box-shadow:0 2px 8px -2px rgba(16,20,24,0.35);';
+    return b && b.cover
+      ? box + "background-image:url('" + b.cover + "');background-color:#e8e2d6;"
+      : box + 'background:#002855;';
+  }
+
+  reset() {
+    this.setState({ q: '', fMood: [], fInt: [], fGenre: [], flags: [], sel: null, limit: 36 });
+  }
+
+  renderVals() {
+    const s = this.state;
+    const goal = this.props.readingGoal ?? 2;
+    const nSimilar = this.props.similarCount ?? 3;
+    const scrim = this.props.scrimStrength ?? 0.62;
+    const books = s.books;
+    const pool = this.pool();
+    const q = s.q.trim().toLowerCase();
+
+    const filtered = pool.filter(b => {
+      if (s.fMood.length && !s.fMood.some(m => b.mood.includes(m))) return false;
+      if (s.fInt.length && !s.fInt.some(i => b.int.includes(i))) return false;
+      if (s.fGenre.length && !s.fGenre.includes(b.genre)) return false;
+      if (s.flags.includes('ch') && !b.ch) return false;
+      if (s.flags.includes('rr') && !b.rr) return false;
+      if (s.flags.includes('ab') && !b.ab) return false;
+      if (s.flags.includes('ser') && !b.ser) return false;
+      if (q && !(b.t + ' ' + b.a + ' ' + b.desc + ' ' + b.int.join(' ')).toLowerCase().includes(q)) return false;
+      return true;
+    });
+
+    const countIn = (key, v) => pool.filter(b => b[key].includes(v)).length;
+    const sel = s.sel ? books.find(b => b.id === s.sel) : null;
+    const setShelf = (id, v) => {
+      const shelf = { ...s.shelf };
+      if (shelf[id] === v) delete shelf[id]; else shelf[id] = v;
+      try { localStorage.setItem('bh-ir-shelf', JSON.stringify(shelf)); } catch (e) {}
+      this.setState({ shelf });
+    };
+    const finished = Object.keys(s.shelf).filter(k => s.shelf[k] === 'done').length;
+    const flagDefs = [
+      { v: 'ch', label: 'Challenging read  (' + pool.filter(b => b.ch).length + ')', msOnly: true },
+      { v: 'rr', label: 'Great if reading is a slog  (' + pool.filter(b => b.rr).length + ')' },
+      { v: 'ab', label: 'Audiobook available  (' + pool.filter(b => b.ab).length + ')' },
+      { v: 'ser', label: 'Part of a series  (' + pool.filter(b => b.ser).length + ')', msOnly: true }
+    ].filter(f => !(f.msOnly && s.school === 'hs')).filter(f => !/\(0\)$/.test(f.label));
+    const hasShield = !!s.shields[s.school === 'hs' ? 'hs' : 'ms'];
+    const reqCover = (id, isbn) => {
+      const layers = [];
+      if (isbn) layers.push("url('https://covers.openlibrary.org/b/isbn/" + isbn + "-L.jpg')");
+      layers.push("url('https://books.google.com/books/content?id=" + id + "&printsec=frontcover&img=1&zoom=1')");
+      return 'width:76px;height:114px;flex:0 0 76px;border-radius:2px;background-color:#7d1210;' +
+        'background-image:' + layers.join(',') + ';background-size:cover;background-position:center;' +
+        'box-shadow:0 3px 12px -3px rgba(0,0,0,0.5);';
+    };
+    const nActive = s.fMood.length + s.fInt.length + s.fGenre.length + s.flags.length;
+    const narrow = s.vw < 1000;
+    const filtersOpen = narrow ? s.filtersOpen : true;
+    const tile = (src) => 'position:relative;display:flex;flex-direction:column;justify-content:flex-end;text-align:left;border:none;' +
+      'min-height:' + (narrow ? '340px' : '460px') + ';padding:' + (narrow ? '30px 30px 34px' : '44px 46px 48px') + ';' +
+      "background-image:url('" + src + "');background-size:cover;background-position:center;background-color:#002855;overflow:hidden;";
+    const tileScrim = 'position:absolute;inset:0;pointer-events:none;transition:opacity 180ms;background:linear-gradient(to top, rgba(0,32,68,' +
+      Math.min(0.96, scrim + 0.3) + ') 0%, rgba(0,32,68,' + scrim + ') 52%, rgba(0,32,68,' + Math.max(0, scrim - 0.32) + ') 100%);';
+
+    return {
+      isNarrow: narrow,
+      filtersOpen,
+      toggleFilters: () => this.setState({ filtersOpen: !s.filtersOpen }),
+      filterToggleLabel: (filtersOpen ? 'Hide filters' : 'Filter by mood, interest or genre') +
+        (nActive > 0 ? '  ·  ' + nActive + ' on' : ''),
+      filterToggleStyle: 'width:100%;text-align:left;padding:13px 15px;border:1px solid #ddd6c8;border-radius:4px;background:#fff;font-size:13.5px;font-weight:700;color:#002855;',
+      shellStyle: narrow
+        ? 'display:flex;flex-direction:column;flex:1;'
+        : 'display:grid;grid-template-columns:minmax(196px,232px) minmax(0,1fr) minmax(268px,330px);align-items:stretch;flex:1;',
+      leftRailStyle: narrow
+        ? 'padding:16px 20px;background:#fbf9f5;border-bottom:1px solid #e2ddd3;display:flex;flex-direction:column;gap:16px;'
+        : 'border-right:1px solid #e2ddd3;padding:22px 20px 40px;background:#fbf9f5;display:flex;flex-direction:column;gap:26px;',
+      gridColStyle: narrow
+        ? 'padding:22px 20px 36px;background:#fdfcfa;'
+        : 'padding:24px 26px 44px;background:#fdfcfa;',
+      rightRailStyle: narrow
+        ? 'border-top:1px solid #e2ddd3;background:#f6f2ea;'
+        : 'border-left:1px solid #e2ddd3;background:#f6f2ea;',
+      isLanding: s.screen === 'landing',
+      isGrade: s.screen === 'grade',
+      isShelf: s.screen === 'shelf',
+      isHS: s.school === 'hs',
+      headerGridStyle: narrow
+        ? 'display:flex;flex-direction:column;gap:32px;'
+        : 'display:grid;grid-template-columns:minmax(320px,0.9fr) minmax(360px,1.1fr);gap:56px;align-items:start;max-width:1240px;',
+      tileGridStyle: 'display:grid;grid-template-columns:repeat(auto-fit,minmax(' + (narrow ? '300px' : '440px') + ',1fr));gap:2px;background:#002855;',
+
+      schoolCards: [
+        {
+          grades: 'Grades 6–8',
+          name: 'H. C. Crittenden Middle School',
+          blurb: 'Titles your teachers recommend, sorted by grade so you only see the ones meant for you.',
+          cta: 'Choose your grade',
+          tileStyle: tile('assets/hcc-drone.jpg'),
+          tileScrim: tileScrim,
+          on: () => { this.reset(); this.setState({ school: 'ms', grade: null, screen: 'grade' }); }
+        },
+        {
+          grades: 'Grades 9–12',
+          name: 'Byram Hills High School',
+          blurb: 'Past summer favorites and popular picks from our Independent Reading Initiative.',
+          cta: 'Browse the list',
+          tileStyle: tile('assets/bhhs-drone.jpg'),
+          tileScrim: tileScrim,
+          on: () => { this.reset(); this.setState({ school: 'hs', grade: null, screen: 'shelf' }); }
+        }
+      ],
+
+      gradeGridStyle: s.vw < 720
+        ? 'display:flex;flex-direction:column;gap:18px;'
+        : 'display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:22px;',
+      gradeCards: [6, 7, 8].map(g => {
+        const inGrade = books.filter(b => b.g.includes(g) && b.cover);
+        const picks = [0.12, 0.45, 0.78].map(f => inGrade[Math.floor(inGrade.length * f)]).filter(Boolean);
+        const rot = [-9, 2, 10];
+        const lift = [16, 0, 14];
+        const tight = s.vw < 1100 && s.vw >= 720;
+        return {
+          num: 'Grade ' + g,
+          label: GRADE_BLURB[g],
+          cta: 'See grade ' + g + ' titles',
+          cardStyle: 'text-align:left;background:#fff;border:1px solid #ddd6c8;border-radius:7px;padding:0;overflow:hidden;' +
+            'display:flex;flex-direction:column;transition:border-color 140ms,box-shadow 140ms;box-shadow:0 10px 28px -22px rgba(16,20,24,0.45);',
+          stackStyle: 'display:flex;align-items:flex-end;justify-content:center;gap:0;height:' + (tight ? '168px' : '200px') +
+            ';padding-top:26px;background:#002855;background-image:linear-gradient(165deg,#0a3a63,#002855);',
+          covers: picks.map((b, i) => ({
+            style: 'display:block;width:' + (tight ? '72px' : '92px') + ';height:' + (tight ? '108px' : '138px') + ';flex:0 0 auto;' +
+              "background-image:url('" + b.cover + "');background-size:cover;background-position:center;background-color:#e8e2d6;" +
+              'border-radius:2px;box-shadow:0 6px 18px -6px rgba(0,0,0,0.65);' +
+              'transform:rotate(' + rot[i] + 'deg) translateY(-' + lift[i] + 'px);' +
+              'margin-left:' + (i === 0 ? '0' : (tight ? '-22px' : '-26px')) + ';z-index:' + (i === 1 ? 3 : 1) + ';'
+          })),
+          on: () => { this.reset(); this.setState({ grade: g, screen: 'shelf' }); }
+        };
+      }),
+
+      goLanding: () => { this.reset(); this.setState({ screen: 'landing', school: null, grade: null }); },
+      goGrade: () => { this.reset(); this.setState({ screen: 'grade' }); },
+      reqGridStyle: narrow
+        ? 'display:flex;flex-direction:column;gap:14px;'
+        : 'display:grid;grid-template-columns:repeat(auto-fit,minmax(380px,1fr));gap:16px;max-width:1100px;',
+      requiredTexts: [
+        {
+          who: 'Rising juniors',
+          courses: ['English 11 AP: Language and Composition'],
+          title: 'Unaccustomed Earth', author: 'Jhumpa Lahiri',
+          desc: 'Eight stories of Bengali-American families caught between the country their parents left and the one their children belong to — marriages arranged and unravelling, siblings keeping each other\u2019s secrets, and the quiet cost of assimilation.',
+          coverStyle: reqCover('3C2FkbJCF1gC')
+        },
+        {
+          who: 'Rising seniors — both of these courses',
+          courses: ['English 12 AP: Literature and Composition', 'Perspectives in Literature'],
+          title: 'The Poisonwood Bible', author: 'Barbara Kingsolver',
+          desc: 'In 1959 an evangelical Baptist preacher drags his wife and four daughters to the Belgian Congo, certain he can save it. Told by the five women, the novel follows what the country does to their family, and what their country was doing to the Congo.',
+          coverStyle: reqCover('Q69PhJN-TbwC', '0061577073')
+        }
+      ],
+      showShield: hasShield,
+      showFallbackMark: !hasShield,
+      shieldStyle: 'height:42px;width:74px;flex:0 0 74px;background-image:url(' + SHIELDS[s.school === 'hs' ? 'hs' : 'ms'] +
+        ');background-size:contain;background-position:left center;background-repeat:no-repeat;',
+      canChangeGrade: s.school === 'ms',
+      contextLabel: s.school === 'hs' ? 'Byram Hills High School' : 'H. C. Crittenden · Grade ' + (s.grade || ''),
+
+      q: s.q,
+      onQ: (e) => this.setState({ q: e.target.value, limit: 36 }),
+      resetAll: () => this.reset(),
+      resultLabel: filtered.length + ' of ' + pool.length + ' titles',
+
+      moodChips: MOODS.map(m => ({
+        label: m + '  (' + countIn('mood', m) + ')',
+        style: this.chip(s.fMood.includes(m)),
+        on: () => this.toggle('fMood', m)
+      })),
+      intChips: [...new Set(pool.flatMap(b => b.int))].sort().map(i => ({
+        label: i + '  (' + countIn('int', i) + ')',
+        style: this.chip(s.fInt.includes(i)),
+        on: () => this.toggle('fInt', i)
+      })),
+      genreChips: [...new Set(pool.map(b => b.genre))].sort().map(g => ({
+        label: g + '  (' + pool.filter(b => b.genre === g).length + ')',
+        style: this.chip(s.fGenre.includes(g)),
+        on: () => this.toggle('fGenre', g)
+      })),
+      hasFlagChips: flagDefs.length > 0,
+      flagChips: flagDefs.map(f => ({ label: f.label, style: this.chip(s.flags.includes(f.v)), on: () => this.toggle('flags', f.v) })),
+
+      hasResults: filtered.length > 0,
+      noResults: books.length > 0 && filtered.length === 0,
+      hasMore: filtered.length > s.limit,
+      showMore: () => this.setState({ limit: s.limit + 48 }),
+      cards: filtered.slice(0, s.limit).map(b => {
+        const st = s.shelf[b.id];
+        const ch = b.ch && s.school !== 'hs';
+        return {
+          t: b.t, a: b.a, initial: b.cover ? '' : b.t,
+          on: () => this.setState({ sel: b.id }),
+          wrapStyle: 'cursor:pointer;padding:6px;margin:-6px;border-radius:4px;' + (s.sel === b.id ? 'background:#eee7da;' : ''),
+          coverStyle: 'position:relative;display:flex;align-items:center;justify-content:center;padding:12px;width:100%;aspect-ratio:2/3;border-radius:2px;box-shadow:0 3px 12px -3px rgba(16,20,24,0.4);' +
+            (b.cover ? "background-image:url('" + b.cover + "');background-size:cover;background-position:center;background-color:#e8e2d6;" : 'background:#002855;'),
+          initialStyle: b.cover ? 'display:none;' : 'font-family:"Source Serif 4",Georgia,serif;font-size:13px;line-height:1.25;color:#fff;text-align:center;font-weight:600;',
+          badge: st === 'done' ? '✓' : st ? '★' : ch ? '◆' : b.rr ? '●' : '',
+          badgeStyle: (st || ch || b.rr)
+            ? 'position:absolute;top:5px;right:5px;width:19px;height:19px;border-radius:50%;display:flex;align-items:center;justify-content:center;font-size:10px;font-weight:700;color:#fff;background:' + (st ? '#9c1918' : ch ? 'rgba(0,40,85,0.9)' : 'rgba(0,40,85,0.65)') + ';'
+            : 'display:none;'
+        };
+      }),
+
+      sel, noSel: !sel,
+      selT: sel && sel.t, selA: sel && sel.a, selDesc: sel && sel.desc,
+      selCoverStyle: this.coverBox(sel, 78, 116),
+      selMeta: sel ? [sel.genre, (sel.ch && s.school !== 'hs') ? 'Challenging' : null, sel.rr ? 'Good for a reluctant reader' : null, sel.ab ? 'Audiobook' : null].filter(Boolean).join(' · ') : '',
+      selTags: sel ? sel.int.concat(sel.mood) : [],
+      shelfButtons: SHELF_DEFS.map(d => ({
+        label: d.label,
+        style: this.chip(sel && s.shelf[sel.id] === d.v),
+        on: () => sel && setShelf(sel.id, d.v)
+      })),
+      similar: sel
+        ? pool.filter(b => b.id !== sel.id).map(b => ({ b, sc: this.score(sel, b) }))
+            .sort((x, y) => y.sc - x.sc).slice(0, nSimilar)
+            .map(({ b }) => ({
+              t: b.t, a: b.a, why: this.reason(sel, b), coverStyle: this.coverBox(b, 36, 54),
+              on: () => this.setState({ sel: b.id })
+            }))
+        : [],
+
+      goalLabel: 'Books finished this year',
+      goalCount: finished + ' / ' + goal,
+      goalBarStyle: 'height:100%;border-radius:20px;background:#9c1918;width:' + Math.min(100, (finished / goal) * 100) + '%;',
+      shelfGroups: SHELF_DEFS.map(d => {
+        const items = Object.keys(s.shelf).filter(k => s.shelf[k] === d.v)
+          .map(k => books.find(b => b.id === Number(k))).filter(Boolean)
+          .map(b => ({ t: b.t, on: () => this.setState({ sel: b.id }), remove: () => setShelf(b.id, d.v) }));
+        return { label: d.label, items, empty: items.length === 0, hint: d.hint };
+      }),
+
+      extLabel: s.school === 'hs' ? 'For the college bound' : 'More curated lists',
+      extLinks: s.school === 'hs' ? HS_LINKS : MS_LINKS,
+      noteBody: s.school === 'hs'
+        ? 'Complete a minimum of two independent reading selections over the summer. During the first week of school, be prepared to discuss and/or write about them. We strongly recommend discussing your choices with teachers, librarians and parents — not every book here is right for every student.'
+        : 'Read at least two books. You will talk about them in September — there is nothing to write. If you pick something that is not on this list, choose it with a family member.'
+    };
+  }
+}
+</script>
+</body>
+</html>
