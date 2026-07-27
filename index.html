@@ -236,7 +236,7 @@
       <sc-if value="{{ noResults }}" hint-placeholder-val="{{ false }}">
         <div style="padding: 90px 20px; text-align: center">
           <div style="font-family: 'Source Serif 4', Georgia, serif; font-size: 21px; color: #101418">Nothing matches all of those yet.</div>
-          <div style="font-size: 14px; color: #6b7280; margin-top: 8px; line-height: 1.6">Try removing a filter — or email the librarian for a title that fits.</div>
+          <div style="font-size: 14px; color: #6b7280; margin-top: 8px; line-height: 1.6">Try removing a filter to see more titles.</div>
         </div>
       </sc-if>
     </div>
@@ -324,14 +324,17 @@
   </div>
 
   <div style="background: #002855; padding: 30px 30px 34px; display: grid; grid-template-columns: repeat(auto-fit, minmax(240px, 1fr)); gap: 40px">
-    <div>
-      <div style="font-size: 10.5px; letter-spacing: 0.14em; text-transform: uppercase; color: #9fb3cc; font-weight: 700; margin-bottom: 11px">Get the book</div>
-      <div style="display: flex; flex-direction: column; gap: 6px; font-size: 13.5px; line-height: 1.5">
-        <a href="https://search.follettsoftware.com/metasearch/ui/47192" target="_blank" style="color: #fff">FollettShelf eBooks →</a>
-        <a href="https://soraapp.com/welcome/login/200158" target="_blank" style="color: #fff">Sora app →</a>
-        <span style="color: #9fb3cc; font-size: 12.5px; line-height: 1.5">Use your school username and password. Quantities are limited.</span>
+    <sc-if value="{{ showEbooks }}" hint-placeholder-val="{{ true }}">
+      <div>
+        <div style="font-size: 10.5px; letter-spacing: 0.14em; text-transform: uppercase; color: #9fb3cc; font-weight: 700; margin-bottom: 11px">Get the book</div>
+        <div style="display: flex; flex-direction: column; gap: 6px; font-size: 13.5px; line-height: 1.5">
+          <a href="https://search.follettsoftware.com/metasearch/ui/47192" target="_blank" style="color: #fff">FollettShelf eBooks →</a>
+          <a href="https://soraapp.com/welcome/login/200158" target="_blank" style="color: #fff">Sora app →</a>
+          <span style="color: #9fb3cc; font-size: 12.5px; line-height: 1.5">Use your school username and password. Quantities are limited.</span>
+          <span style="color: #9fb3cc; font-size: 12.5px; line-height: 1.5; margin-top: 4px">Trouble signing in to FollettShelf or Sora? Email <a href="mailto:bbarthelmes@byramhills.net" style="color: #fff">bbarthelmes@byramhills.net</a></span>
+        </div>
       </div>
-    </div>
+    </sc-if>
     <div>
       <div style="font-size: 10.5px; letter-spacing: 0.14em; text-transform: uppercase; color: #9fb3cc; font-weight: 700; margin-bottom: 11px">{{ extLabel }}</div>
       <div style="display: flex; flex-direction: column; gap: 6px; font-size: 13.5px; line-height: 1.5">
@@ -343,7 +346,6 @@
     <div>
       <div style="font-size: 10.5px; letter-spacing: 0.14em; text-transform: uppercase; color: #9fb3cc; font-weight: 700; margin-bottom: 11px">What to expect</div>
       <div style="font-size: 13.5px; line-height: 1.55; color: #dfe6ef">{{ noteBody }}</div>
-      <div style="font-size: 12.5px; line-height: 1.55; color: #9fb3cc; margin-top: 10px">Questions? Email <a href="mailto:bbarthelmes@byramhills.net" style="color: #fff">bbarthelmes@byramhills.net</a></div>
     </div>
   </div>
 </div>
@@ -439,10 +441,14 @@ class Component extends DCLogic {
       : base + 'background:#fff;color:#454b56;border:1px solid #ddd6c8;';
   }
 
+  bgImg(b) {
+    return (b.cover2 ? "url('" + b.cover2 + "')," : '') + "url('" + b.cover + "')";
+  }
+
   coverBox(b, w, h) {
     const box = 'width:' + w + 'px;height:' + h + 'px;flex:0 0 ' + w + 'px;border-radius:2px;background-size:cover;background-position:center;box-shadow:0 2px 8px -2px rgba(16,20,24,0.35);';
     return b && b.cover
-      ? box + "background-image:url('" + b.cover + "');background-color:#e8e2d6;"
+      ? box + 'background-image:' + this.bgImg(b) + ';background-color:#e8e2d6;'
       : box + 'background:#002855;';
   }
 
@@ -572,7 +578,7 @@ class Component extends DCLogic {
             ';padding-top:26px;background:#002855;background-image:linear-gradient(165deg,#0a3a63,#002855);',
           covers: picks.map((b, i) => ({
             style: 'display:block;width:' + (tight ? '72px' : '92px') + ';height:' + (tight ? '108px' : '138px') + ';flex:0 0 auto;' +
-              "background-image:url('" + b.cover + "');background-size:cover;background-position:center;background-color:#e8e2d6;" +
+              'background-image:' + this.bgImg(b) + ';background-size:cover;background-position:center;background-color:#e8e2d6;' +
               'border-radius:2px;box-shadow:0 6px 18px -6px rgba(0,0,0,0.65);' +
               'transform:rotate(' + rot[i] + 'deg) translateY(-' + lift[i] + 'px);' +
               'margin-left:' + (i === 0 ? '0' : (tight ? '-22px' : '-26px')) + ';z-index:' + (i === 1 ? 3 : 1) + ';'
@@ -644,7 +650,7 @@ class Component extends DCLogic {
           on: () => this.setState({ sel: b.id }),
           wrapStyle: 'cursor:pointer;padding:6px;margin:-6px;border-radius:4px;' + (s.sel === b.id ? 'background:#eee7da;' : ''),
           coverStyle: 'position:relative;display:flex;align-items:center;justify-content:center;padding:12px;width:100%;aspect-ratio:2/3;border-radius:2px;box-shadow:0 3px 12px -3px rgba(16,20,24,0.4);' +
-            (b.cover ? "background-image:url('" + b.cover + "');background-size:cover;background-position:center;background-color:#e8e2d6;" : 'background:#002855;'),
+            (b.cover ? 'background-image:' + this.bgImg(b) + ';background-size:cover;background-position:center;background-color:#e8e2d6;' : 'background:#002855;'),
           initialStyle: b.cover ? 'display:none;' : 'font-family:"Source Serif 4",Georgia,serif;font-size:13px;line-height:1.25;color:#fff;text-align:center;font-weight:600;',
           badge: st === 'done' ? '✓' : st ? '★' : ch ? '◆' : b.rr ? '●' : '',
           badgeStyle: (st || ch || b.rr)
@@ -682,6 +688,7 @@ class Component extends DCLogic {
         return { label: d.label, items, empty: items.length === 0, hint: d.hint };
       }),
 
+      showEbooks: s.school !== 'hs',
       extLabel: s.school === 'hs' ? 'For the college bound' : 'More curated lists',
       extLinks: s.school === 'hs' ? HS_LINKS : MS_LINKS,
       noteBody: s.school === 'hs'
