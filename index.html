@@ -8,6 +8,9 @@
 <body>
 <x-dc>
 <helmet>
+<meta http-equiv="Cache-Control" content="no-cache, no-store, must-revalidate" />
+<meta http-equiv="Pragma" content="no-cache" />
+<meta http-equiv="Expires" content="0" />
 <link rel="preconnect" href="https://fonts.googleapis.com" />
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin="" />
 <link href="https://fonts.googleapis.com/css2?family=Source+Serif+4:ital,opsz,wght@0,8..60,400;0,8..60,600;0,8..60,700;1,8..60,400&amp;family=Karla:wght@400;500;600;700&amp;display=swap" rel="stylesheet" />
@@ -28,8 +31,8 @@
 <!-- ================= LANDING ================= -->
 <sc-if value="{{ isLanding }}" hint-placeholder-val="{{ true }}">
 <div style="min-height: 100vh; display: flex; flex-direction: column; background: #fdfcfa">
-  <div style="background: #002855; padding: 40px 8vw 48px">
-    <div style="display: flex; align-items: center; gap: 22px; margin-bottom: 26px; flex-wrap: wrap">
+  <div style="background: #002855; padding: 26px 8vw 30px">
+    <div style="display: flex; align-items: center; gap: 22px; margin-bottom: 18px; flex-wrap: wrap">
       <div style="display: flex; align-items: center; gap: 12px">
         <a href="https://byramhills.org/hcc" target="_blank" rel="noopener" style="height: 52px; width: 50px; flex: 0 0 50px; background-image: url(assets/shield-hcc.png); background-size: contain; background-position: center; background-repeat: no-repeat; display: block; opacity: 1; transition: opacity 140ms" style-hover="opacity: 0.78" aria-label="H.C. Crittenden Middle School"></a>
         <a href="https://byramhills.org/bhhs" target="_blank" rel="noopener" style="height: 52px; width: 50px; flex: 0 0 50px; background-image: url(assets/shield-bhhs.png); background-size: contain; background-position: center; background-repeat: no-repeat; display: block; opacity: 1; transition: opacity 140ms" style-hover="opacity: 0.78" aria-label="Byram Hills High School"></a>
@@ -38,13 +41,31 @@
     </div>
     <div style="{{ headerGridStyle }}">
       <div>
-        <h1 style="font-family: 'Source Serif 4', Georgia, serif; font-size: 60px; line-height: 1.02; margin: 0; color: #fff; font-weight: 600; letter-spacing: -0.02em">Independent Reading</h1>
-        <p style="margin: 18px 0 0; max-width: 420px; font-size: 17px; line-height: 1.55; color: #cfdae7; text-wrap: pretty">Two books over the summer, and reading that keeps going all year.</p>
+        <h1 style="font-family: 'Source Serif 4', Georgia, serif; font-size: 48px; line-height: 1.02; margin: 0; color: #fff; font-weight: 600; letter-spacing: -0.02em">Independent Reading</h1>
+        <sc-if value="{{ noticeUnderTitle }}" hint-placeholder-val="{{ true }}">
+          <div style="margin-top: 24px; display: flex; flex-direction: column; gap: 18px; max-width: 440px">
+            <div>
+              <div style="display: flex; align-items: baseline; gap: 9px; margin-bottom: 6px">
+                <span style="width: 16px; height: 2px; background: #9c1918; display: inline-block; flex: 0 0 16px; transform: translateY(-4px)"></span>
+                <span style="font-size: 11px; letter-spacing: 0.16em; text-transform: uppercase; color: #f0b8b7; font-weight: 700">What's expected</span>
+              </div>
+              <p style="margin: 0 0 7px; font-size: 14.5px; line-height: 1.55; color: #dfe6ef; text-wrap: pretty">Read a <strong style="color: #fff">minimum of two books over the summer</strong>. You'll talk about them in September — there's nothing to write.</p>
+              <p style="margin: 0; font-size: 14.5px; line-height: 1.55; color: #dfe6ef; text-wrap: pretty">Summer is the starting line, not the finish — come back whenever you need your next book.</p>
+            </div>
+            <div>
+              <div style="display: flex; align-items: baseline; gap: 9px; margin-bottom: 6px">
+                <span style="width: 16px; height: 2px; background: #9c1918; display: inline-block; flex: 0 0 16px; transform: translateY(-4px)"></span>
+                <span style="font-size: 11px; letter-spacing: 0.16em; text-transform: uppercase; color: #f0b8b7; font-weight: 700">Choosing your own</span>
+              </div>
+              <p style="margin: 0; font-size: 14.5px; line-height: 1.55; color: #dfe6ef; text-wrap: pretty">You're welcome to read something that isn't on our lists. When you do, choose it together with a family member — and talk it over with a teacher or librarian.</p>
+            </div>
+          </div>
+        </sc-if>
       </div>
       <div style="border-left: 2px solid #9c1918; padding: 4px 0 4px 26px; max-width: 560px">
         <div style="font-size: 10.5px; letter-spacing: 0.16em; text-transform: uppercase; color: #f0b8b7; font-weight: 700; margin-bottom: 12px">Why we do this</div>
-        <p style="margin: 0 0 13px; font-size: 16.5px; line-height: 1.6; color: #fff; text-wrap: pretty">While shared texts typically populate the landscape of the secondary English classroom, recreational reading plays an equally important role in developing <em>critical thinking, empathy, and self-awareness</em>.</p>
-        <p style="margin: 0; font-size: 16.5px; line-height: 1.6; color: #fff; text-wrap: pretty">During the academic year, students make quarterly independent reading selections. Over the summer, students should continue to immerse themselves in high-interest reading material.</p>
+        <p style="margin: 0 0 10px; font-size: 15px; line-height: 1.55; color: #fff; text-wrap: pretty">While shared texts typically populate the landscape of the secondary English classroom, recreational reading plays an equally important role in developing <em>critical thinking, empathy, and self-awareness</em>.</p>
+        <p style="margin: 0; font-size: 15px; line-height: 1.55; color: #fff; text-wrap: pretty">During the academic year, students make quarterly independent reading selections. Over the summer, students should continue to immerse themselves in high-interest reading material.</p>
       </div>
     </div>
   </div>
@@ -63,17 +84,6 @@
     </sc-for>
   </div>
 
-  <div style="padding: 50px 8vw 74px; max-width: 1180px; display: grid; grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); gap: 44px">
-    <div>
-      <div style="font-size: 11px; letter-spacing: 0.14em; text-transform: uppercase; color: #9c1918; font-weight: 700; margin-bottom: 12px">What's expected</div>
-      <p style="margin: 0 0 12px; font-size: 14.5px; line-height: 1.6; color: #454b56; text-wrap: pretty">Read a <strong>minimum of two books over the summer</strong>. You'll talk about them in September — there's nothing to write.</p>
-      <p style="margin: 0; font-size: 14.5px; line-height: 1.6; color: #454b56; text-wrap: pretty">Summer is the starting line, not the finish. You're expected to keep reading independently all year long, so come back whenever you need your next book.</p>
-    </div>
-    <div>
-      <div style="font-size: 11px; letter-spacing: 0.14em; text-transform: uppercase; color: #9c1918; font-weight: 700; margin-bottom: 12px">Choosing your own</div>
-      <p style="margin: 0; font-size: 14.5px; line-height: 1.6; color: #454b56; text-wrap: pretty">You're welcome to read something that isn't on our lists. When you do, choose it together with a family member — and talk it over with a teacher or librarian.</p>
-    </div>
-  </div>
 </div>
 </sc-if>
 
@@ -93,8 +103,8 @@
     <button onClick="{{ goLanding }}" style="background: rgba(255,255,255,0.12); border: 1px solid rgba(255,255,255,0.35); color: #fff; font-size: 13px; font-weight: 700; padding: 8px 14px; border-radius: 3px" style-hover="background: rgba(255,255,255,0.22)">← Not my school</button>
   </div>
   <div style="flex: 1; display: flex; flex-direction: column; justify-content: center; padding: 64px 8vw 84px; max-width: 1240px; animation: fadeUp 260ms ease-out">
-    <div style="font-size: 11px; letter-spacing: 0.16em; text-transform: uppercase; color: #9c1918; font-weight: 700; margin-bottom: 14px">Grade Level</div>
-    <h2 style="font-family: 'Source Serif 4', Georgia, serif; font-size: 46px; line-height: 1.08; margin: 0 0 12px; color: #101418; font-weight: 600; letter-spacing: -0.015em; max-width: 760px">Which grade are you in this school year?</h2>
+    <div style="font-size: 11px; letter-spacing: 0.16em; text-transform: uppercase; color: #9c1918; font-weight: 700; margin-bottom: 14px">Choose one</div>
+    <h2 style="font-family: 'Source Serif 4', Georgia, serif; font-size: 46px; line-height: 1.08; margin: 0 0 12px; color: #101418; font-weight: 600; letter-spacing: -0.015em; max-width: 760px">Select your grade level…</h2>
     <p style="margin: 0 0 40px; font-size: 16.5px; line-height: 1.55; color: #5f6672; max-width: 540px; text-wrap: pretty">Your teachers recommend different titles for each grade, so this makes sure you only see the ones meant for you.</p>
     <div style="{{ gradeGridStyle }}">
       <sc-for list="{{ gradeCards }}" as="g" hint-placeholder-count="3">
@@ -140,17 +150,26 @@
     </div>
   </div>
 
-  <sc-if value="{{ isHS }}" hint-placeholder-val="{{ false }}">
-    <div style="background: #9c1918; color: #fff">
-      <button onClick="{{ toggleReq }}" style="width: 100%; background: none; border: none; color: #fff; text-align: left; padding: 15px 30px; display: flex; align-items: center; gap: 16px; cursor: pointer" style-hover="background: rgba(0,0,0,0.12)">
-        <span style="font-size: 11px; letter-spacing: 0.16em; text-transform: uppercase; font-weight: 700; color: #f6d9d8; flex: 0 0 auto">Required reading</span>
-        <span style="font-family: 'Source Serif 4', Georgia, serif; font-size: 17.5px; font-weight: 600; flex: 1; min-width: 0">In an advanced course? Start with your required text.</span>
-        <span style="display: inline-flex; align-items: center; gap: 8px; background: rgba(255,255,255,0.14); border: 1px solid rgba(255,255,255,0.4); border-radius: 3px; padding: 7px 13px; font-size: 12.5px; font-weight: 700; flex: 0 0 auto">{{ reqToggleLabel }}</span>
-      </button>
+  <div style="background: #002855; border-top: 2px solid #9c1918; border-bottom: 2px solid #9c1918; padding: 12px 30px; display: flex; align-items: center; gap: 20px; flex-wrap: wrap">
+    <div style="{{ expectStyle }}">
+      <span style="font-size: 10.5px; letter-spacing: 0.14em; text-transform: uppercase; color: #f6d9d8; font-weight: 700; flex: 0 0 auto">Expectations</span>
+      <span style="font-size: 16.5px; line-height: 1.4; color: #fff; max-width: 900px; text-wrap: pretty">{{ noteBody }}</span>
     </div>
-  </sc-if>
+    <sc-if value="{{ showEbooks }}" hint-placeholder-val="{{ true }}">
+      <div style="display: flex; flex-direction: column; gap: 7px; align-items: flex-end">
+        <div style="display: flex; align-items: center; gap: 8px; flex-wrap: wrap">
+          <a href="https://search.follettsoftware.com/metasearch/ui/47192" target="_blank" rel="noopener" style="background: rgba(255,255,255,0.12); border: 1px solid rgba(255,255,255,0.35); border-radius: 3px; padding: 7px 12px; font-size: 12.5px; font-weight: 700; color: #fff; text-decoration: none; white-space: nowrap" style-hover="background: rgba(255,255,255,0.24)">FollettShelf eBooks →</a>
+          <a href="https://soraapp.com/welcome/login/200158" target="_blank" rel="noopener" style="background: rgba(255,255,255,0.12); border: 1px solid rgba(255,255,255,0.35); border-radius: 3px; padding: 7px 12px; font-size: 12.5px; font-weight: 700; color: #fff; text-decoration: none; white-space: nowrap" style-hover="background: rgba(255,255,255,0.24)">Sora app →</a>
+        </div>
+        <div style="font-size: 12px; line-height: 1.5; color: #9fb3cc; text-align: right; max-width: 340px">Sign in with your school username and password — quantities are limited. Trouble? Email <a href="mailto:bbarthelmes@byramhills.net" style="color: #fff">bbarthelmes@byramhills.net</a></div>
+      </div>
+    </sc-if>
+    <sc-if value="{{ isHS }}" hint-placeholder-val="{{ false }}">
+      <button onClick="{{ toggleReq }}" style="background: rgba(156,25,24,0.9); border: 1px solid #c4413f; color: #fff; font-size: 12.5px; font-weight: 700; padding: 9px 15px; border-radius: 3px; cursor: pointer; flex: 0 0 auto; white-space: nowrap" style-hover="background: #9c1918">{{ reqToggleLabel }}</button>
+    </sc-if>
+  </div>
   <sc-if value="{{ showReq }}" hint-placeholder-val="{{ false }}">
-    <div style="background: #9c1918; padding: 4px 30px 30px; color: #fff; animation: fadeUp 200ms ease-out">
+    <div style="background: #9c1918; padding: 22px 30px 30px; color: #fff; animation: fadeUp 200ms ease-out">
       <p style="margin: 0 0 22px; font-size: 15px; line-height: 1.55; color: #f6d9d8; max-width: 640px; text-wrap: pretty">These students read the required text <strong style="color: #fff">plus a minimum of one</strong> additional independent selection from the list below — not two.</p>
       <div style="{{ reqGridStyle }}">
         <sc-for list="{{ requiredTexts }}" as="r" hint-placeholder-count="2">
@@ -323,30 +342,14 @@
     </div>
   </div>
 
-  <div style="background: #002855; padding: 30px 30px 34px; display: grid; grid-template-columns: repeat(auto-fit, minmax(240px, 1fr)); gap: 40px">
-    <sc-if value="{{ showEbooks }}" hint-placeholder-val="{{ true }}">
-      <div>
-        <div style="font-size: 10.5px; letter-spacing: 0.14em; text-transform: uppercase; color: #9fb3cc; font-weight: 700; margin-bottom: 11px">Get the book</div>
-        <div style="display: flex; flex-direction: column; gap: 6px; font-size: 13.5px; line-height: 1.5">
-          <a href="https://search.follettsoftware.com/metasearch/ui/47192" target="_blank" style="color: #fff">FollettShelf eBooks →</a>
-          <a href="https://soraapp.com/welcome/login/200158" target="_blank" style="color: #fff">Sora app →</a>
-          <span style="color: #9fb3cc; font-size: 12.5px; line-height: 1.5">Use your school username and password. Quantities are limited.</span>
-          <span style="color: #9fb3cc; font-size: 12.5px; line-height: 1.5; margin-top: 4px">Trouble signing in to FollettShelf or Sora? Email <a href="mailto:bbarthelmes@byramhills.net" style="color: #fff">bbarthelmes@byramhills.net</a></span>
-        </div>
-      </div>
-    </sc-if>
-    <div>
-      <div style="font-size: 10.5px; letter-spacing: 0.14em; text-transform: uppercase; color: #9fb3cc; font-weight: 700; margin-bottom: 11px">{{ extLabel }}</div>
-      <div style="display: flex; flex-direction: column; gap: 6px; font-size: 13.5px; line-height: 1.5">
-        <sc-for list="{{ extLinks }}" as="lk" hint-placeholder-count="3">
-          <a href="{{ lk.href }}" target="_blank" style="color: #fff">{{ lk.label }} →</a>
-        </sc-for>
-      </div>
+  <div style="background: #002855; padding: 24px 30px 30px; display: flex; align-items: center; gap: 18px; flex-wrap: wrap">
+    <span style="font-size: 10.5px; letter-spacing: 0.14em; text-transform: uppercase; color: #9fb3cc; font-weight: 700; flex: 0 0 auto">Looking for more</span>
+    <div style="display: flex; align-items: center; gap: 8px; flex-wrap: wrap">
+      <sc-for list="{{ extLinks }}" as="lk" hint-placeholder-count="2">
+        <a href="{{ lk.href }}" target="_blank" rel="noopener" style="background: rgba(255,255,255,0.12); border: 1px solid rgba(255,255,255,0.35); border-radius: 3px; padding: 7px 12px; font-size: 12.5px; font-weight: 700; color: #fff; text-decoration: none; white-space: nowrap" style-hover="background: rgba(255,255,255,0.24)">{{ lk.label }} →</a>
+      </sc-for>
     </div>
-    <div>
-      <div style="font-size: 10.5px; letter-spacing: 0.14em; text-transform: uppercase; color: #9fb3cc; font-weight: 700; margin-bottom: 11px">What to expect</div>
-      <div style="font-size: 13.5px; line-height: 1.55; color: #dfe6ef">{{ noteBody }}</div>
-    </div>
+    <div style="flex-basis: 100%; font-size: 13px; line-height: 1.55; color: #9fb3cc; border-top: 1px solid rgba(255,255,255,0.16); padding-top: 16px; margin-top: 4px">Questions about Independent Reading? Email <a href="mailto:dsmith@byramhills.net" style="color: #fff">dsmith@byramhills.net</a></div>
   </div>
 </div>
 </sc-if>
@@ -390,6 +393,7 @@
 </sc-if>
 </x-dc>
 <script type="text/x-dc" data-dc-script data-props="{&quot;readingGoal&quot;:{&quot;editor&quot;:&quot;int&quot;,&quot;default&quot;:10,&quot;min&quot;:1,&quot;max&quot;:12,&quot;tsType&quot;:&quot;number&quot;,&quot;section&quot;:&quot;Expectations&quot;},&quot;similarCount&quot;:{&quot;editor&quot;:&quot;int&quot;,&quot;default&quot;:3,&quot;min&quot;:2,&quot;max&quot;:6,&quot;tsType&quot;:&quot;number&quot;,&quot;section&quot;:&quot;Recommendations&quot;},&quot;scrimStrength&quot;:{&quot;editor&quot;:&quot;range&quot;,&quot;default&quot;:0.62,&quot;min&quot;:0.2,&quot;max&quot;:0.9,&quot;step&quot;:0.02,&quot;tsType&quot;:&quot;number&quot;,&quot;section&quot;:&quot;Landing page&quot;}}">
+const DATA_VERSION = '2026-07-28';
 const MS_LINKS = [
   { label: 'YALSA award-winning book lists', href: 'http://www.ala.org/yalsa/bookawards/booklists/members' },
   { label: 'New titles at the HCC library', href: 'https://docs.google.com/presentation/d/1haIIWKjltXuiqfS8AqZK0N1917N7U6aVgIl1ouP7lA8/edit' }
@@ -417,7 +421,7 @@ class Component extends DCLogic {
   };
 
   componentDidMount() {
-    fetch('books.json').then(r => r.json()).then(books => {
+    fetch('books.json?v=' + DATA_VERSION, { cache: 'no-store' }).then(r => r.json()).then(books => {
       let shelf = {};
       try { shelf = JSON.parse(localStorage.getItem('bh-ir-shelf') || '{}'); } catch (e) {}
       let recName = '';
@@ -576,7 +580,7 @@ class Component extends DCLogic {
     const narrow = s.vw < 1000;
     const filtersOpen = narrow ? s.filtersOpen : true;
     const tile = (src) => 'position:relative;display:flex;flex-direction:column;justify-content:flex-end;text-align:left;border:none;' +
-      'min-height:' + (narrow ? '340px' : '460px') + ';padding:' + (narrow ? '30px 30px 34px' : '44px 46px 48px') + ';' +
+      'min-height:' + (narrow ? '300px' : '380px') + ';padding:' + (narrow ? '26px 28px 30px' : '36px 42px 40px') + ';' +
       "background-image:url('" + src + "');background-size:cover;background-position:center;background-color:#002855;overflow:hidden;";
     const tileScrim = 'position:absolute;inset:0;pointer-events:none;transition:opacity 180ms;background:linear-gradient(to top, rgba(0,32,68,' +
       Math.min(0.96, scrim + 0.3) + ') 0%, rgba(0,32,68,' + scrim + ') 52%, rgba(0,32,68,' + Math.max(0, scrim - 0.32) + ') 100%);';
@@ -593,7 +597,7 @@ class Component extends DCLogic {
         : 'display:grid;grid-template-columns:minmax(196px,232px) minmax(0,1fr) minmax(268px,330px);align-items:stretch;flex:1;',
       leftRailStyle: narrow
         ? 'padding:16px 20px;background:#fbf9f5;border-bottom:1px solid #e2ddd3;display:flex;flex-direction:column;gap:16px;'
-        : 'border-right:1px solid #e2ddd3;padding:22px 20px 40px;background:#fbf9f5;display:flex;flex-direction:column;gap:26px;',
+        : 'border-right:1px solid #e2ddd3;padding:22px 20px 40px;background:#fbf9f5;display:flex;flex-direction:column;gap:26px;position:sticky;top:0;align-self:start;max-height:100vh;overflow-y:auto;',
       gridColStyle: narrow
         ? 'padding:22px 20px 36px;background:#fdfcfa;'
         : 'padding:24px 26px 44px;background:#fdfcfa;',
@@ -604,6 +608,7 @@ class Component extends DCLogic {
       isGrade: s.screen === 'grade',
       isShelf: s.screen === 'shelf',
       isHS: s.school === 'hs',
+      noticeUnderTitle: true,
       headerGridStyle: narrow
         ? 'display:flex;flex-direction:column;gap:32px;'
         : 'display:grid;grid-template-columns:minmax(320px,0.9fr) minmax(360px,1.1fr);gap:56px;align-items:start;max-width:1240px;',
@@ -680,7 +685,7 @@ class Component extends DCLogic {
         }
       ],
       showReq: s.school === 'hs' && s.reqOpen,
-      reqToggleLabel: s.reqOpen ? 'Hide ▲' : 'Show required texts ▼',
+      reqToggleLabel: s.reqOpen ? 'Hide required texts ▲' : 'In an advanced course? Required texts ▼',
       toggleReq: () => this.setState(st => ({ reqOpen: !st.reqOpen })),
       shieldHref: s.school === 'hs' ? 'https://byramhills.org/bhhs' : 'https://byramhills.org/hcc',
       showShield: hasShield,
@@ -784,8 +789,10 @@ class Component extends DCLogic {
         return { label: d.label, items, empty: items.length === 0, hint: d.hint };
       }),
 
+      expectStyle: s.school === 'hs'
+        ? 'flex:1;min-width:260px;display:flex;align-items:baseline;gap:14px;'
+        : 'flex:1;min-width:260px;display:flex;flex-direction:column;gap:5px;',
       showEbooks: s.school !== 'hs',
-      extLabel: s.school === 'hs' ? 'For the college bound' : 'More curated lists',
       extLinks: s.school === 'hs' ? HS_LINKS : MS_LINKS,
       noteBody: s.school === 'hs'
         ? 'Complete a minimum of two independent reading selections over the summer. During the first week of school, be prepared to discuss and/or write about them. We strongly recommend discussing your choices with teachers, librarians and parents — not every book here is right for every student.'
