@@ -486,6 +486,9 @@ class Component extends DCLogic {
   };
 
   componentDidMount() {
+    const h = (typeof location !== 'undefined' ? location.hash : '').replace('#', '').toLowerCase();
+    if (h === 'hs') this.setState({ school: 'hs', grade: null, screen: 'shelf' });
+    else if (/^g[678]$/.test(h)) this.setState({ school: 'ms', grade: Number(h[1]), screen: 'shelf' });
     fetch('books.json?v=' + DATA_VERSION, { cache: 'no-store' }).then(r => r.json()).then(books => {
       let shelf = {};
       try { shelf = JSON.parse(localStorage.getItem('bh-ir-shelf') || '{}'); } catch (e) {}
