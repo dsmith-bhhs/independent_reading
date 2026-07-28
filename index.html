@@ -31,15 +31,15 @@
   <div style="background: #002855; padding: 40px 8vw 48px">
     <div style="display: flex; align-items: center; gap: 22px; margin-bottom: 26px; flex-wrap: wrap">
       <div style="display: flex; align-items: center; gap: 12px">
-        <div style="height: 52px; width: 50px; flex: 0 0 50px; background-image: url(assets/shield-hcc.png); background-size: contain; background-position: center; background-repeat: no-repeat"></div>
-        <div style="height: 52px; width: 50px; flex: 0 0 50px; background-image: url(assets/shield-bhhs.png); background-size: contain; background-position: center; background-repeat: no-repeat"></div>
+        <a href="https://byramhills.org/hcc" target="_blank" rel="noopener" style="height: 52px; width: 50px; flex: 0 0 50px; background-image: url(assets/shield-hcc.png); background-size: contain; background-position: center; background-repeat: no-repeat; display: block; opacity: 1; transition: opacity 140ms" style-hover="opacity: 0.78" aria-label="H.C. Crittenden Middle School"></a>
+        <a href="https://byramhills.org/bhhs" target="_blank" rel="noopener" style="height: 52px; width: 50px; flex: 0 0 50px; background-image: url(assets/shield-bhhs.png); background-size: contain; background-position: center; background-repeat: no-repeat; display: block; opacity: 1; transition: opacity 140ms" style-hover="opacity: 0.78" aria-label="Byram Hills High School"></a>
       </div>
       <span style="color: #fff; font-size: 17px; letter-spacing: 0.13em; text-transform: uppercase; font-weight: 700">Byram Hills Central School District</span>
     </div>
     <div style="{{ headerGridStyle }}">
       <div>
         <h1 style="font-family: 'Source Serif 4', Georgia, serif; font-size: 60px; line-height: 1.02; margin: 0; color: #fff; font-weight: 600; letter-spacing: -0.02em">Independent Reading</h1>
-        <p style="margin: 18px 0 0; max-width: 420px; font-size: 17px; line-height: 1.55; color: #cfdae7; text-wrap: pretty">Two books over the summer, and reading that keeps going all year — chosen by you.</p>
+        <p style="margin: 18px 0 0; max-width: 420px; font-size: 17px; line-height: 1.55; color: #cfdae7; text-wrap: pretty">Two books over the summer, and reading that keeps going all year.</p>
       </div>
       <div style="border-left: 2px solid #9c1918; padding: 4px 0 4px 26px; max-width: 560px">
         <div style="font-size: 10.5px; letter-spacing: 0.16em; text-transform: uppercase; color: #f0b8b7; font-weight: 700; margin-bottom: 12px">Why we do this</div>
@@ -83,18 +83,18 @@
   <div style="background: #002855; padding: 22px 8vw; display: flex; align-items: center; justify-content: space-between">
     <div style="display: flex; align-items: center; gap: 13px">
       <sc-if value="{{ showShield }}" hint-placeholder-val="{{ false }}">
-        <div style="{{ shieldStyle }}"></div>
+        <a href="{{ shieldHref }}" target="_blank" rel="noopener" style="{{ shieldStyle }}" style-hover="opacity: 0.78"></a>
       </sc-if>
       <sc-if value="{{ showFallbackMark }}" hint-placeholder-val="{{ false }}">
         <div style="width: 30px; height: 30px; border: 2px solid #fff; border-radius: 2px; display: flex; align-items: center; justify-content: center; font-family: 'Source Serif 4', serif; color: #fff; font-size: 15px; font-weight: 700">B</div>
       </sc-if>
       <span style="color: #fff; font-family: 'Source Serif 4', Georgia, serif; font-size: 17px; font-weight: 600">H. C. Crittenden Middle School</span>
     </div>
-    <button onClick="{{ goLanding }}" style="background: none; border: none; color: #9fb3cc; font-size: 13px; font-weight: 600; text-decoration: underline; text-underline-offset: 3px">← not my school</button>
+    <button onClick="{{ goLanding }}" style="background: rgba(255,255,255,0.12); border: 1px solid rgba(255,255,255,0.35); color: #fff; font-size: 13px; font-weight: 700; padding: 8px 14px; border-radius: 3px" style-hover="background: rgba(255,255,255,0.22)">← Not my school</button>
   </div>
   <div style="flex: 1; display: flex; flex-direction: column; justify-content: center; padding: 64px 8vw 84px; max-width: 1240px; animation: fadeUp 260ms ease-out">
-    <div style="font-size: 11px; letter-spacing: 0.16em; text-transform: uppercase; color: #9c1918; font-weight: 700; margin-bottom: 14px">One more thing</div>
-    <h2 style="font-family: 'Source Serif 4', Georgia, serif; font-size: 46px; line-height: 1.08; margin: 0 0 12px; color: #101418; font-weight: 600; letter-spacing: -0.015em; max-width: 760px">Which grade are you entering this fall?</h2>
+    <div style="font-size: 11px; letter-spacing: 0.16em; text-transform: uppercase; color: #9c1918; font-weight: 700; margin-bottom: 14px">Grade Level</div>
+    <h2 style="font-family: 'Source Serif 4', Georgia, serif; font-size: 46px; line-height: 1.08; margin: 0 0 12px; color: #101418; font-weight: 600; letter-spacing: -0.015em; max-width: 760px">Which grade are you in this school year?</h2>
     <p style="margin: 0 0 40px; font-size: 16.5px; line-height: 1.55; color: #5f6672; max-width: 540px; text-wrap: pretty">Your teachers recommend different titles for each grade, so this makes sure you only see the ones meant for you.</p>
     <div style="{{ gradeGridStyle }}">
       <sc-for list="{{ gradeCards }}" as="g" hint-placeholder-count="3">
@@ -122,7 +122,7 @@
   <div style="background: #002855; padding: 15px 30px; display: flex; align-items: center; justify-content: space-between; gap: 24px; flex-wrap: wrap">
     <div style="display: flex; align-items: center; gap: 14px">
       <sc-if value="{{ showShield }}" hint-placeholder-val="{{ false }}">
-        <div style="{{ shieldStyle }}"></div>
+        <a href="{{ shieldHref }}" target="_blank" rel="noopener" style="{{ shieldStyle }}" style-hover="opacity: 0.78"></a>
       </sc-if>
       <sc-if value="{{ showFallbackMark }}" hint-placeholder-val="{{ false }}">
         <div style="width: 32px; height: 32px; border: 2px solid #fff; border-radius: 2px; display: flex; align-items: center; justify-content: center; font-family: 'Source Serif 4', serif; color: #fff; font-size: 16px; font-weight: 700">B</div>
@@ -134,18 +134,23 @@
     </div>
     <div style="display: flex; align-items: center; gap: 18px">
       <sc-if value="{{ canChangeGrade }}" hint-placeholder-val="{{ false }}">
-        <button onClick="{{ goGrade }}" style="background: rgba(255,255,255,0.1); border: none; color: #fff; font-size: 12.5px; font-weight: 700; padding: 8px 14px; border-radius: 3px">Change grade</button>
+        <button onClick="{{ goGrade }}" style="background: rgba(255,255,255,0.12); border: 1px solid rgba(255,255,255,0.35); color: #fff; font-size: 12.5px; font-weight: 700; padding: 8px 14px; border-radius: 3px" style-hover="background: rgba(255,255,255,0.22)">Change grade</button>
       </sc-if>
-      <button onClick="{{ goLanding }}" style="background: none; border: none; color: #9fb3cc; font-size: 12.5px; font-weight: 600; text-decoration: underline; text-underline-offset: 3px">Start over</button>
+      <button onClick="{{ goLanding }}" style="background: rgba(255,255,255,0.12); border: 1px solid rgba(255,255,255,0.35); color: #fff; font-size: 12.5px; font-weight: 700; padding: 8px 14px; border-radius: 3px" style-hover="background: rgba(255,255,255,0.22)">Start over</button>
     </div>
   </div>
 
   <sc-if value="{{ isHS }}" hint-placeholder-val="{{ false }}">
-    <div style="background: #9c1918; padding: 28px 30px 30px; color: #fff">
-      <div style="display: flex; align-items: baseline; gap: 12px; flex-wrap: wrap; margin-bottom: 4px">
-        <span style="font-size: 11px; letter-spacing: 0.16em; text-transform: uppercase; font-weight: 700; color: #f6d9d8">Required first</span>
-      </div>
-      <h2 style="font-family: 'Source Serif 4', Georgia, serif; font-size: 27px; line-height: 1.15; margin: 8px 0 6px; font-weight: 600">In an advanced course? Start with your required text.</h2>
+    <div style="background: #9c1918; color: #fff">
+      <button onClick="{{ toggleReq }}" style="width: 100%; background: none; border: none; color: #fff; text-align: left; padding: 15px 30px; display: flex; align-items: center; gap: 16px; cursor: pointer" style-hover="background: rgba(0,0,0,0.12)">
+        <span style="font-size: 11px; letter-spacing: 0.16em; text-transform: uppercase; font-weight: 700; color: #f6d9d8; flex: 0 0 auto">Required reading</span>
+        <span style="font-family: 'Source Serif 4', Georgia, serif; font-size: 17.5px; font-weight: 600; flex: 1; min-width: 0">In an advanced course? Start with your required text.</span>
+        <span style="display: inline-flex; align-items: center; gap: 8px; background: rgba(255,255,255,0.14); border: 1px solid rgba(255,255,255,0.4); border-radius: 3px; padding: 7px 13px; font-size: 12.5px; font-weight: 700; flex: 0 0 auto">{{ reqToggleLabel }}</span>
+      </button>
+    </div>
+  </sc-if>
+  <sc-if value="{{ showReq }}" hint-placeholder-val="{{ false }}">
+    <div style="background: #9c1918; padding: 4px 30px 30px; color: #fff; animation: fadeUp 200ms ease-out">
       <p style="margin: 0 0 22px; font-size: 15px; line-height: 1.55; color: #f6d9d8; max-width: 640px; text-wrap: pretty">These students read the required text <strong style="color: #fff">plus a minimum of one</strong> additional independent selection from the list below — not two.</p>
       <div style="{{ reqGridStyle }}">
         <sc-for list="{{ requiredTexts }}" as="r" hint-placeholder-count="2">
@@ -186,20 +191,14 @@
       <sc-if value="{{ filtersOpen }}" hint-placeholder-val="{{ true }}">
       <div style="display: flex; flex-direction: column; gap: 26px">
       <div style="display: flex; flex-direction: column; gap: 9px">
-        <div style="font-size: 10.5px; letter-spacing: 0.14em; text-transform: uppercase; color: #9c1918; font-weight: 700">How do you want to feel?</div>
-        <sc-for list="{{ moodChips }}" as="c" hint-placeholder-count="6">
+        <div style="font-size: 10.5px; letter-spacing: 0.14em; text-transform: uppercase; color: #9c1918; font-weight: 700">Genre</div>
+        <sc-for list="{{ genreChips }}" as="c" hint-placeholder-count="8">
           <button onClick="{{ c.on }}" style="{{ c.style }}">{{ c.label }}</button>
         </sc-for>
       </div>
       <div style="display: flex; flex-direction: column; gap: 9px">
         <div style="font-size: 10.5px; letter-spacing: 0.14em; text-transform: uppercase; color: #9c1918; font-weight: 700">Interests</div>
         <sc-for list="{{ intChips }}" as="c" hint-placeholder-count="10">
-          <button onClick="{{ c.on }}" style="{{ c.style }}">{{ c.label }}</button>
-        </sc-for>
-      </div>
-      <div style="display: flex; flex-direction: column; gap: 9px">
-        <div style="font-size: 10.5px; letter-spacing: 0.14em; text-transform: uppercase; color: #9c1918; font-weight: 700">Genre</div>
-        <sc-for list="{{ genreChips }}" as="c" hint-placeholder-count="8">
           <button onClick="{{ c.on }}" style="{{ c.style }}">{{ c.label }}</button>
         </sc-for>
       </div>
@@ -292,6 +291,7 @@
           <div style="font-size: 10.5px; letter-spacing: 0.14em; text-transform: uppercase; color: #9c1918; font-weight: 700">My shelf</div>
           <div style="font-size: 11.5px; color: #7a808b">saved on this device</div>
         </div>
+        <button onClick="{{ openRecord }}" style="width: 100%; margin-bottom: 16px; background: #9c1918; border: none; color: #fff; font-size: 13px; font-weight: 700; padding: 11px 14px; border-radius: 4px; text-align: center; cursor: pointer" style-hover="background: #86100f">★  Save my reading record</button>
         <div style="background: #fff; border: 1px solid #e2ddd3; border-radius: 5px; padding: 15px 16px; margin-bottom: 18px">
           <div style="display: flex; justify-content: space-between; align-items: baseline; font-size: 13px; color: #454b56">
             <span style="font-weight: 600">{{ goalLabel }}</span>
@@ -351,9 +351,45 @@
 </div>
 </sc-if>
 
+<sc-if value="{{ recordOpen }}" hint-placeholder-val="{{ false }}">
+  <div style="position: fixed; inset: 0; background: rgba(6,14,26,0.72); z-index: 60; display: flex; align-items: flex-start; justify-content: center; overflow: auto; padding: 36px 20px">
+    <div style="width: 100%; max-width: 620px; background: #fdfcfa; border-radius: 6px; box-shadow: 0 40px 90px -30px rgba(0,0,0,0.6); overflow: hidden; animation: fadeUp 220ms ease-out">
+      <div style="background: #002855; padding: 18px 24px; display: flex; align-items: center; justify-content: space-between; gap: 16px">
+        <div style="color: #fff; font-family: 'Source Serif 4', Georgia, serif; font-size: 18px; font-weight: 600">Your reading record</div>
+        <button onClick="{{ closeRecord }}" style="background: rgba(255,255,255,0.12); border: 1px solid rgba(255,255,255,0.35); color: #fff; font-size: 12.5px; font-weight: 700; padding: 7px 13px; border-radius: 3px; cursor: pointer" style-hover="background: rgba(255,255,255,0.22)">Close</button>
+      </div>
+      <div style="padding: 24px">
+        <p style="margin: 0 0 18px; font-size: 14px; line-height: 1.55; color: #5f6672; text-wrap: pretty">Your shelf lives in this browser, so clearing your history or switching devices wipes it. Save a copy you can keep, print, or send to your teacher.</p>
+        <label style="display: block; font-size: 10.5px; letter-spacing: 0.14em; text-transform: uppercase; color: #9c1918; font-weight: 700; margin-bottom: 7px">Your name</label>
+        <input value="{{ recName }}" onInput="{{ onRecName }}" placeholder="First and last name" style="width: 100%; padding: 11px 13px; border: 1px solid #d3ccbe; border-radius: 4px; background: #fff; font-size: 14.5px; color: #101418; outline: none; margin-bottom: 20px" />
+        <div style="border: 1px solid #e2ddd3; background: #fff; border-radius: 5px; padding: 20px 22px; margin-bottom: 20px">
+          <div style="display: flex; gap: 26px; flex-wrap: wrap; margin-bottom: 16px">
+            <div>
+              <div style="font-family: 'Source Serif 4', Georgia, serif; font-size: 34px; line-height: 1; color: #9c1918; font-weight: 600">{{ recFinished }}</div>
+              <div style="font-size: 11.5px; letter-spacing: 0.1em; text-transform: uppercase; color: #7a808b; font-weight: 700; margin-top: 5px">Finished</div>
+            </div>
+            <div>
+              <div style="font-family: 'Source Serif 4', Georgia, serif; font-size: 34px; line-height: 1; color: #002855; font-weight: 600">{{ recReading }}</div>
+              <div style="font-size: 11.5px; letter-spacing: 0.1em; text-transform: uppercase; color: #7a808b; font-weight: 700; margin-top: 5px">Reading now</div>
+            </div>
+            <div>
+              <div style="font-family: 'Source Serif 4', Georgia, serif; font-size: 34px; line-height: 1; color: #002855; font-weight: 600">{{ recWant }}</div>
+              <div style="font-size: 11.5px; letter-spacing: 0.1em; text-transform: uppercase; color: #7a808b; font-weight: 700; margin-top: 5px">Up next</div>
+            </div>
+          </div>
+          <div style="font-size: 13.5px; line-height: 1.55; color: #454b56; text-wrap: pretty">{{ recCelebration }}</div>
+        </div>
+        <div style="display: flex; gap: 10px; flex-wrap: wrap">
+          <button onClick="{{ downloadRecord }}" style="flex: 1; min-width: 190px; background: #9c1918; border: none; color: #fff; font-size: 13.5px; font-weight: 700; padding: 13px 16px; border-radius: 4px; cursor: pointer" style-hover="background: #86100f">Download my record</button>
+          <button onClick="{{ printRecord }}" style="flex: 1; min-width: 150px; background: #fff; border: 1px solid #002855; color: #002855; font-size: 13.5px; font-weight: 700; padding: 13px 16px; border-radius: 4px; cursor: pointer" style-hover="background: #eef2f7">Print it</button>
+        </div>
+        <div style="font-size: 12px; color: #9aa1ac; margin-top: 12px; line-height: 1.5">Downloads a single file you can reopen any time — it lists every title so you can rebuild your shelf if this browser forgets it.</div>
+      </div>
+    </div>
+  </div>
+</sc-if>
 </x-dc>
 <script type="text/x-dc" data-dc-script data-props="{&quot;readingGoal&quot;:{&quot;editor&quot;:&quot;int&quot;,&quot;default&quot;:10,&quot;min&quot;:1,&quot;max&quot;:12,&quot;tsType&quot;:&quot;number&quot;,&quot;section&quot;:&quot;Expectations&quot;},&quot;similarCount&quot;:{&quot;editor&quot;:&quot;int&quot;,&quot;default&quot;:3,&quot;min&quot;:2,&quot;max&quot;:6,&quot;tsType&quot;:&quot;number&quot;,&quot;section&quot;:&quot;Recommendations&quot;},&quot;scrimStrength&quot;:{&quot;editor&quot;:&quot;range&quot;,&quot;default&quot;:0.62,&quot;min&quot;:0.2,&quot;max&quot;:0.9,&quot;step&quot;:0.02,&quot;tsType&quot;:&quot;number&quot;,&quot;section&quot;:&quot;Landing page&quot;}}">
-const MOODS = ['Makes me laugh','Keeps me up at night','Makes me think','Breaks my heart','Sweeps me away','Feels like my life'];
 const MS_LINKS = [
   { label: 'YALSA award-winning book lists', href: 'http://www.ala.org/yalsa/bookawards/booklists/members' },
   { label: 'New titles at the HCC library', href: 'https://docs.google.com/presentation/d/1haIIWKjltXuiqfS8AqZK0N1917N7U6aVgIl1ouP7lA8/edit' }
@@ -374,16 +410,19 @@ const SHELF_DEFS = [
 class Component extends DCLogic {
   state = {
     books: [], screen: 'landing', school: null, grade: null,
-    q: '', fMood: [], fInt: [], fGenre: [], flags: [], sel: null, limit: 36, shelf: {},
+    q: '', fInt: [], fGenre: [], flags: [], sel: null, limit: 36, shelf: {},
     vw: typeof window !== 'undefined' ? window.innerWidth : 1280, filtersOpen: true,
-    shields: { ms: false, hs: false }
+    shields: { ms: false, hs: false }, reqOpen: false,
+    recordOpen: false, recName: ''
   };
 
   componentDidMount() {
     fetch('books.json').then(r => r.json()).then(books => {
       let shelf = {};
       try { shelf = JSON.parse(localStorage.getItem('bh-ir-shelf') || '{}'); } catch (e) {}
-      this.setState({ books, shelf });
+      let recName = '';
+      try { recName = localStorage.getItem('bh-ir-name') || ''; } catch (e) {}
+      this.setState({ books, shelf, recName });
     }).catch(() => {});
     this._onResize = () => {
       const vw = window.innerWidth;
@@ -419,19 +458,55 @@ class Component extends DCLogic {
     let s = 0;
     if (a.genre === b.genre) s += 3;
     s += 2 * a.int.filter(x => b.int.includes(x)).length;
-    s += a.mood.filter(x => b.mood.includes(x)).length;
     if (!!a.ch === !!b.ch) s += 0.5;
     return s;
   }
 
   reason(a, b) {
     const i = a.int.filter(x => b.int.includes(x));
-    const m = a.mood.filter(x => b.mood.includes(x));
     const bits = [];
     if (i.length) bits.push(i.slice(0, 2).map(x => x.toLowerCase()).join(' + '));
-    if (m.length) bits.push(m[0].toLowerCase());
     if (!bits.length && a.genre === b.genre) bits.push(a.genre.toLowerCase());
     return bits.join(' · ');
+  }
+
+  celebration(finished, goal) {
+    if (finished === 0) return 'Your shelf is just getting started. Mark a book finished and this record starts filling up.';
+    if (finished === 1) return 'One book down. That is one more world than you had last month.';
+    if (finished < goal) return finished + ' books finished and counting — ' + (goal - finished) + ' more to reach your goal of ' + goal + '.';
+    return finished + ' books finished. You met your goal of ' + goal + ' — that is a genuinely serious year of reading.';
+  }
+
+  recordHTML(s, books, finished, goal) {
+    const esc = (t) => String(t).replace(/&/g, '&amp;').replace(/</g, '&lt;').replace(/>/g, '&gt;');
+    const date = new Date().toLocaleDateString('en-US', { month: 'long', day: 'numeric', year: 'numeric' });
+    const who = [s.recName && s.recName.trim(), s.school === 'hs' ? 'Byram Hills High School' : 'H. C. Crittenden Middle School', s.grade ? 'Grade ' + s.grade : null].filter(Boolean).join(' · ');
+    const group = (v, label) => {
+      const items = Object.keys(s.shelf).filter(k => s.shelf[k] === v)
+        .map(k => books.find(b => b.id === Number(k))).filter(Boolean);
+      if (!items.length) return '';
+      return '<h2 style="font:600 13px/1 system-ui;letter-spacing:.14em;text-transform:uppercase;color:#9c1918;margin:32px 0 12px">' + label + ' (' + items.length + ')</h2>' +
+        '<ul style="margin:0;padding:0;list-style:none;display:grid;gap:9px">' +
+        items.map(b => '<li style="font:400 15px/1.4 Georgia,serif;color:#101418"><em>' + esc(b.t) + '</em><span style="color:#6b7280;font:400 13.5px/1.4 system-ui"> &nbsp;' + esc(b.a) + '</span></li>').join('') +
+        '</ul>';
+    };
+    return '<!DOCTYPE html><html><head><meta charset="utf-8"><title>My Reading Record</title></head>' +
+      '<body style="margin:0;background:#fdfcfa;font-family:system-ui,sans-serif;-webkit-print-color-adjust:exact;print-color-adjust:exact">' +
+      '<div style="max-width:660px;margin:0 auto;padding:0 0 60px">' +
+      '<div style="background:#002855;color:#fff;padding:34px 40px">' +
+      '<div style="font:700 11px/1 system-ui;letter-spacing:.16em;text-transform:uppercase;color:#9fb3cc">Byram Hills Central School District</div>' +
+      '<h1 style="font:600 38px/1.05 Georgia,serif;margin:14px 0 0">My Reading Record</h1>' +
+      '<div style="font:400 14px/1.5 system-ui;color:#cfdae7;margin-top:10px">' + esc(who || 'Independent Reading') + '</div>' +
+      '<div style="font:400 12.5px/1.5 system-ui;color:#9fb3cc;margin-top:3px">Saved ' + date + '</div></div>' +
+      '<div style="padding:34px 40px">' +
+      '<div style="display:flex;gap:34px;flex-wrap:wrap;border-bottom:2px solid #9c1918;padding-bottom:24px">' +
+      [['Finished', finished, '#9c1918'], ['Reading now', Object.keys(s.shelf).filter(k => s.shelf[k] === 'reading').length, '#002855'], ['Up next', Object.keys(s.shelf).filter(k => s.shelf[k] === 'want').length, '#002855']]
+        .map(([l, n, c]) => '<div><div style="font:600 40px/1 Georgia,serif;color:' + c + '">' + n + '</div><div style="font:700 11px/1 system-ui;letter-spacing:.1em;text-transform:uppercase;color:#7a808b;margin-top:6px">' + l + '</div></div>').join('') +
+      '</div>' +
+      '<p style="font:400 15px/1.6 system-ui;color:#454b56;margin:22px 0 0">' + esc(this.celebration(finished, goal)) + '</p>' +
+      group('done', 'Books I finished') + group('reading', 'Reading now') + group('want', 'Want to read') +
+      '<p style="font:400 12.5px/1.6 system-ui;color:#9aa1ac;margin:38px 0 0;border-top:1px solid #e2ddd3;padding-top:16px">Keep this file. If your browser forgets your shelf, you can add these titles back from the Independent Reading site.</p>' +
+      '</div></div></body></html>';
   }
 
   chip(active) {
@@ -453,7 +528,7 @@ class Component extends DCLogic {
   }
 
   reset() {
-    this.setState({ q: '', fMood: [], fInt: [], fGenre: [], flags: [], sel: null, limit: 36 });
+    this.setState({ q: '', fInt: [], fGenre: [], flags: [], sel: null, limit: 36 });
   }
 
   renderVals() {
@@ -466,7 +541,6 @@ class Component extends DCLogic {
     const q = s.q.trim().toLowerCase();
 
     const filtered = pool.filter(b => {
-      if (s.fMood.length && !s.fMood.some(m => b.mood.includes(m))) return false;
       if (s.fInt.length && !s.fInt.some(i => b.int.includes(i))) return false;
       if (s.fGenre.length && !s.fGenre.includes(b.genre)) return false;
       if (s.flags.includes('ch') && !b.ch) return false;
@@ -493,15 +567,12 @@ class Component extends DCLogic {
       { v: 'ser', label: 'Part of a series  (' + pool.filter(b => b.ser).length + ')', msOnly: true }
     ].filter(f => !(f.msOnly && s.school === 'hs')).filter(f => !/\(0\)$/.test(f.label));
     const hasShield = !!s.shields[s.school === 'hs' ? 'hs' : 'ms'];
-    const reqCover = (id, isbn) => {
-      const layers = [];
-      if (isbn) layers.push("url('https://covers.openlibrary.org/b/isbn/" + isbn + "-L.jpg')");
-      layers.push("url('https://books.google.com/books/content?id=" + id + "&printsec=frontcover&img=1&zoom=1')");
+    const reqCover = (file) => {
       return 'width:76px;height:114px;flex:0 0 76px;border-radius:2px;background-color:#7d1210;' +
-        'background-image:' + layers.join(',') + ';background-size:cover;background-position:center;' +
+        "background-image:url('covers-hd/" + file + ".jpg');background-size:cover;background-position:center;" +
         'box-shadow:0 3px 12px -3px rgba(0,0,0,0.5);';
     };
-    const nActive = s.fMood.length + s.fInt.length + s.fGenre.length + s.flags.length;
+    const nActive = s.fInt.length + s.fGenre.length + s.flags.length;
     const narrow = s.vw < 1000;
     const filtersOpen = narrow ? s.filtersOpen : true;
     const tile = (src) => 'position:relative;display:flex;flex-direction:column;justify-content:flex-end;text-align:left;border:none;' +
@@ -514,7 +585,7 @@ class Component extends DCLogic {
       isNarrow: narrow,
       filtersOpen,
       toggleFilters: () => this.setState({ filtersOpen: !s.filtersOpen }),
-      filterToggleLabel: (filtersOpen ? 'Hide filters' : 'Filter by mood, interest or genre') +
+      filterToggleLabel: (filtersOpen ? 'Hide filters' : 'Filter by genre or interest') +
         (nActive > 0 ? '  ·  ' + nActive + ' on' : ''),
       filterToggleStyle: 'width:100%;text-align:left;padding:13px 15px;border:1px solid #ddd6c8;border-radius:4px;background:#fff;font-size:13.5px;font-weight:700;color:#002855;',
       shellStyle: narrow
@@ -528,7 +599,7 @@ class Component extends DCLogic {
         : 'padding:24px 26px 44px;background:#fdfcfa;',
       rightRailStyle: narrow
         ? 'border-top:1px solid #e2ddd3;background:#f6f2ea;'
-        : 'border-left:1px solid #e2ddd3;background:#f6f2ea;',
+        : 'border-left:1px solid #e2ddd3;background:#f6f2ea;position:sticky;top:0;align-self:start;max-height:100vh;overflow-y:auto;',
       isLanding: s.screen === 'landing',
       isGrade: s.screen === 'grade',
       isShelf: s.screen === 'shelf',
@@ -598,16 +669,20 @@ class Component extends DCLogic {
           courses: ['English 11 AP: Language and Composition'],
           title: 'Unaccustomed Earth', author: 'Jhumpa Lahiri',
           desc: 'Eight stories of Bengali-American families caught between the country their parents left and the one their children belong to — marriages arranged and unravelling, siblings keeping each other\u2019s secrets, and the quiet cost of assimilation.',
-          coverStyle: reqCover('3C2FkbJCF1gC')
+          coverStyle: reqCover('unaccustomedearth')
         },
         {
           who: 'Rising seniors — both of these courses',
           courses: ['English 12 AP: Literature and Composition', 'Perspectives in Literature'],
           title: 'The Poisonwood Bible', author: 'Barbara Kingsolver',
           desc: 'In 1959 an evangelical Baptist preacher drags his wife and four daughters to the Belgian Congo, certain he can save it. Told by the five women, the novel follows what the country does to their family, and what their country was doing to the Congo.',
-          coverStyle: reqCover('Q69PhJN-TbwC', '0061577073')
+          coverStyle: reqCover('poisonwoodbible')
         }
       ],
+      showReq: s.school === 'hs' && s.reqOpen,
+      reqToggleLabel: s.reqOpen ? 'Hide ▲' : 'Show required texts ▼',
+      toggleReq: () => this.setState(st => ({ reqOpen: !st.reqOpen })),
+      shieldHref: s.school === 'hs' ? 'https://byramhills.org/bhhs' : 'https://byramhills.org/hcc',
       showShield: hasShield,
       showFallbackMark: !hasShield,
       shieldStyle: 'height:42px;width:74px;flex:0 0 74px;background-image:url(' + SHIELDS[s.school === 'hs' ? 'hs' : 'ms'] +
@@ -620,11 +695,6 @@ class Component extends DCLogic {
       resetAll: () => this.reset(),
       resultLabel: filtered.length + ' of ' + pool.length + ' titles',
 
-      moodChips: MOODS.map(m => ({
-        label: m + '  (' + countIn('mood', m) + ')',
-        style: this.chip(s.fMood.includes(m)),
-        on: () => this.toggle('fMood', m)
-      })),
       intChips: [...new Set(pool.flatMap(b => b.int))].sort().map(i => ({
         label: i + '  (' + countIn('int', i) + ')',
         style: this.chip(s.fInt.includes(i)),
@@ -663,7 +733,7 @@ class Component extends DCLogic {
       selT: sel && sel.t, selA: sel && sel.a, selDesc: sel && sel.desc,
       selCoverStyle: this.coverBox(sel, 78, 116),
       selMeta: sel ? [sel.genre, (sel.ch && s.school !== 'hs') ? 'Challenging' : null, sel.rr ? 'Good for a reluctant reader' : null, sel.ab ? 'Audiobook' : null].filter(Boolean).join(' · ') : '',
-      selTags: sel ? sel.int.concat(sel.mood) : [],
+      selTags: sel ? sel.int : [],
       shelfButtons: SHELF_DEFS.map(d => ({
         label: d.label,
         style: this.chip(sel && s.shelf[sel.id] === d.v),
@@ -677,6 +747,32 @@ class Component extends DCLogic {
               on: () => this.setState({ sel: b.id })
             }))
         : [],
+
+      recordOpen: s.recordOpen,
+      recName: s.recName,
+      onRecName: (e) => { const v = e.target.value; this.setState({ recName: v }); try { localStorage.setItem('bh-ir-name', v); } catch (err) {} },
+      openRecord: () => this.setState({ recordOpen: true }),
+      closeRecord: () => this.setState({ recordOpen: false }),
+      recFinished: finished,
+      recReading: Object.keys(s.shelf).filter(k => s.shelf[k] === 'reading').length,
+      recWant: Object.keys(s.shelf).filter(k => s.shelf[k] === 'want').length,
+      recCelebration: this.celebration(finished, goal),
+      downloadRecord: () => {
+        const html = this.recordHTML(s, books, finished, goal);
+        const blob = new Blob([html], { type: 'text/html' });
+        const a = document.createElement('a');
+        a.href = URL.createObjectURL(blob);
+        a.download = 'my-reading-record' + (s.recName ? '-' + s.recName.trim().toLowerCase().replace(/[^a-z0-9]+/g, '-') : '') + '.html';
+        document.body.appendChild(a); a.click(); a.remove();
+        setTimeout(() => URL.revokeObjectURL(a.href), 4000);
+      },
+      printRecord: () => {
+        const w = window.open('', '_blank');
+        if (!w) return;
+        w.document.write(this.recordHTML(s, books, finished, goal));
+        w.document.close();
+        setTimeout(() => { w.focus(); w.print(); }, 350);
+      },
 
       goalLabel: 'Books finished this year',
       goalCount: finished + ' / ' + goal,

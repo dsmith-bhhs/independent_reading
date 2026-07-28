@@ -6,7 +6,7 @@ const t0 = Date.now();
 // phase 1: resolve cover ids for anything still failing
 const need = books.filter(b => { const m = man[b.id]; return m && (m.st === 'err' || (m.st||'').startsWith('http')); });
 for (let i = 0; i < need.length; i += 4) {
-  if (Date.now() - t0 > 9000) break;
+  if (Date.now() - t0 > 4000) break;
   await Promise.all(need.slice(i, i + 4).map(async b => {
     const u = 'https://openlibrary.org/search.json?title=' + encodeURIComponent(norm(b.t)) +
       '&author=' + encodeURIComponent(norm(b.a || '')) + '&fields=cover_i&limit=5&sort=editions';
@@ -23,7 +23,7 @@ for (let i = 0; i < need.length; i += 4) {
 let saved = 0, fails = 0;
 const pend = books.filter(b => man[b.id] && man[b.id].st === 'pending');
 for (const b of pend) {
-  if (Date.now() - t0 > 24000) break;
+  if (Date.now() - t0 > 14000) break;
   const m = man[b.id];
   try {
     const cr = await fetch('https://covers.openlibrary.org/b/id/' + m.cid + '-L.jpg');
