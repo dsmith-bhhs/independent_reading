@@ -30,7 +30,7 @@
 
 <!-- ================= LANDING ================= -->
 <sc-if value="{{ isLanding }}" hint-placeholder-val="{{ true }}">
-<div style="min-height: 100vh; display: flex; flex-direction: column; background: #fdfcfa">
+<div style="min-height: 100vh; display: flex; flex-direction: column; background: #002855">
   <div style="background: #002855; padding: 26px 8vw 30px">
     <div style="display: flex; align-items: center; gap: 22px; margin-bottom: 18px; flex-wrap: wrap">
       <div style="display: flex; align-items: center; gap: 12px">
@@ -84,6 +84,7 @@
     </sc-for>
   </div>
 
+  <div style="padding: 4px 8vw 30px; font-size: 12.5px; line-height: 1.5; color: #7f95b0">Updated {{ lastUpdated }}</div>
 </div>
 </sc-if>
 
@@ -311,6 +312,25 @@
           <div style="font-size: 11.5px; color: #7a808b">saved on this device</div>
         </div>
         <button onClick="{{ openRecord }}" style="width: 100%; margin-bottom: 16px; background: #9c1918; border: none; color: #fff; font-size: 13px; font-weight: 700; padding: 11px 14px; border-radius: 4px; text-align: center; cursor: pointer" style-hover="background: #86100f">★  Save my reading record</button>
+        <sc-if value="{{ addClosed }}" hint-placeholder-val="{{ true }}">
+          <button onClick="{{ openAdd }}" style="width: 100%; margin-bottom: 16px; background: #fff; border: 1px dashed #b6ad9c; color: #002855; font-size: 12.5px; font-weight: 700; padding: 10px 14px; border-radius: 4px; cursor: pointer" style-hover="border-color: #9c1918; color: #9c1918">+  Add a book that isn't on the list</button>
+        </sc-if>
+        <sc-if value="{{ addOpen }}" hint-placeholder-val="{{ false }}">
+          <div style="background: #fff; border: 1px solid #e2ddd3; border-radius: 5px; padding: 15px 16px; margin-bottom: 16px; display: flex; flex-direction: column; gap: 9px">
+            <div style="font-size: 11.5px; letter-spacing: 0.1em; text-transform: uppercase; color: #9c1918; font-weight: 700">Add your own book</div>
+            <input value="{{ addTitle }}" onInput="{{ onAddTitle }}" placeholder="Title" style="width: 100%; padding: 9px 11px; border: 1px solid #d3ccbe; border-radius: 4px; font-size: 13.5px; color: #101418; outline: none" />
+            <input value="{{ addAuthor }}" onInput="{{ onAddAuthor }}" placeholder="Author (optional)" style="width: 100%; padding: 9px 11px; border: 1px solid #d3ccbe; border-radius: 4px; font-size: 13.5px; color: #101418; outline: none" />
+            <div style="display: flex; gap: 6px">
+              <sc-for list="{{ addStatusChips }}" as="c" hint-placeholder-count="3">
+                <button onClick="{{ c.on }}" style="{{ c.style }}">{{ c.label }}</button>
+              </sc-for>
+            </div>
+            <div style="display: flex; gap: 7px; margin-top: 2px">
+              <button onClick="{{ saveAdd }}" style="flex: 1; background: #002855; border: none; color: #fff; font-size: 12.5px; font-weight: 700; padding: 9px 12px; border-radius: 4px; cursor: pointer" style-hover="background: #013a75">Add to my shelf</button>
+              <button onClick="{{ cancelAdd }}" style="background: none; border: 1px solid #d3ccbe; color: #7a808b; font-size: 12.5px; font-weight: 700; padding: 9px 12px; border-radius: 4px; cursor: pointer" style-hover="color: #9c1918">Cancel</button>
+            </div>
+          </div>
+        </sc-if>
         <div style="background: #fff; border: 1px solid #e2ddd3; border-radius: 5px; padding: 15px 16px; margin-bottom: 18px">
           <div style="display: flex; justify-content: space-between; align-items: baseline; font-size: 13px; color: #454b56">
             <span style="font-weight: 600">{{ goalLabel }}</span>
@@ -331,6 +351,9 @@
                 <sc-for list="{{ grp.items }}" as="it" hint-placeholder-count="0">
                   <div style="display: flex; align-items: center; gap: 8px; font-size: 12.5px; color: #454b56">
                     <span onClick="{{ it.on }}" style="cursor: pointer; flex: 1; line-height: 1.35" style-hover="color: #9c1918">{{ it.t }}</span>
+                    <sc-if value="{{ it.own }}" hint-placeholder-val="{{ false }}">
+                      <span style="font-size: 9.5px; letter-spacing: 0.08em; text-transform: uppercase; color: #9c1918; border: 1px solid #e3cbca; background: #fbf1f0; border-radius: 2px; padding: 2px 4px; font-weight: 700; flex: 0 0 auto">Mine</span>
+                    </sc-if>
                     <button onClick="{{ it.remove }}" style="border: none; background: none; color: #b0b6c0; font-size: 15px; line-height: 1; padding: 2px 4px" style-hover="color: #9c1918">×</button>
                   </div>
                 </sc-for>
@@ -417,7 +440,8 @@ class Component extends DCLogic {
     q: '', fInt: [], fGenre: [], flags: [], sel: null, limit: 36, shelf: {},
     vw: typeof window !== 'undefined' ? window.innerWidth : 1280, filtersOpen: true,
     shields: { ms: false, hs: false }, reqOpen: false,
-    recordOpen: false, recName: ''
+    recordOpen: false, recName: '', custom: [],
+    addOpen: false, addTitle: '', addAuthor: '', addStatus: 'reading'
   };
 
   componentDidMount() {
@@ -426,7 +450,9 @@ class Component extends DCLogic {
       try { shelf = JSON.parse(localStorage.getItem('bh-ir-shelf') || '{}'); } catch (e) {}
       let recName = '';
       try { recName = localStorage.getItem('bh-ir-name') || ''; } catch (e) {}
-      this.setState({ books, shelf, recName });
+      let custom = [];
+      try { custom = JSON.parse(localStorage.getItem('bh-ir-custom') || '[]'); } catch (e) {}
+      this.setState({ books, shelf, recName, custom });
     }).catch(() => {});
     this._onResize = () => {
       const vw = window.innerWidth;
@@ -487,7 +513,8 @@ class Component extends DCLogic {
     const who = [s.recName && s.recName.trim(), s.school === 'hs' ? 'Byram Hills High School' : 'H. C. Crittenden Middle School', s.grade ? 'Grade ' + s.grade : null].filter(Boolean).join(' · ');
     const group = (v, label) => {
       const items = Object.keys(s.shelf).filter(k => s.shelf[k] === v)
-        .map(k => books.find(b => b.id === Number(k))).filter(Boolean);
+        .map(k => books.find(b => b.id === Number(k))).filter(Boolean)
+        .concat((s.custom || []).filter(c => c.v === v).map(c => ({ t: c.t, a: c.a || 'my own choice' })));
       if (!items.length) return '';
       return '<h2 style="font:600 13px/1 system-ui;letter-spacing:.14em;text-transform:uppercase;color:#9c1918;margin:32px 0 12px">' + label + ' (' + items.length + ')</h2>' +
         '<ul style="margin:0;padding:0;list-style:none;display:grid;gap:9px">' +
@@ -504,7 +531,7 @@ class Component extends DCLogic {
       '<div style="font:400 12.5px/1.5 system-ui;color:#9fb3cc;margin-top:3px">Saved ' + date + '</div></div>' +
       '<div style="padding:34px 40px">' +
       '<div style="display:flex;gap:34px;flex-wrap:wrap;border-bottom:2px solid #9c1918;padding-bottom:24px">' +
-      [['Finished', finished, '#9c1918'], ['Reading now', Object.keys(s.shelf).filter(k => s.shelf[k] === 'reading').length, '#002855'], ['Up next', Object.keys(s.shelf).filter(k => s.shelf[k] === 'want').length, '#002855']]
+      [['Finished', finished, '#9c1918'], ['Reading now', Object.keys(s.shelf).filter(k => s.shelf[k] === 'reading').length + (s.custom || []).filter(c => c.v === 'reading').length, '#002855'], ['Up next', Object.keys(s.shelf).filter(k => s.shelf[k] === 'want').length + (s.custom || []).filter(c => c.v === 'want').length, '#002855']]
         .map(([l, n, c]) => '<div><div style="font:600 40px/1 Georgia,serif;color:' + c + '">' + n + '</div><div style="font:700 11px/1 system-ui;letter-spacing:.1em;text-transform:uppercase;color:#7a808b;margin-top:6px">' + l + '</div></div>').join('') +
       '</div>' +
       '<p style="font:400 15px/1.6 system-ui;color:#454b56;margin:22px 0 0">' + esc(this.celebration(finished, goal)) + '</p>' +
@@ -563,7 +590,12 @@ class Component extends DCLogic {
       try { localStorage.setItem('bh-ir-shelf', JSON.stringify(shelf)); } catch (e) {}
       this.setState({ shelf });
     };
-    const finished = Object.keys(s.shelf).filter(k => s.shelf[k] === 'done').length;
+    const saveCustom = (custom) => {
+      try { localStorage.setItem('bh-ir-custom', JSON.stringify(custom)); } catch (e) {}
+      this.setState({ custom });
+    };
+    const finished = Object.keys(s.shelf).filter(k => s.shelf[k] === 'done').length +
+      s.custom.filter(c => c.v === 'done').length;
     const flagDefs = [
       { v: 'ch', label: 'Challenging read  (' + pool.filter(b => b.ch).length + ')', msOnly: true },
       { v: 'rr', label: 'Great if reading is a slog  (' + pool.filter(b => b.rr).length + ')' },
@@ -604,6 +636,7 @@ class Component extends DCLogic {
       rightRailStyle: narrow
         ? 'border-top:1px solid #e2ddd3;background:#f6f2ea;'
         : 'border-left:1px solid #e2ddd3;background:#f6f2ea;position:sticky;top:0;align-self:start;max-height:100vh;overflow-y:auto;',
+      lastUpdated: new Date(DATA_VERSION + 'T12:00:00').toLocaleDateString('en-US', { month: 'long', year: 'numeric' }),
       isLanding: s.screen === 'landing',
       isGrade: s.screen === 'grade',
       isShelf: s.screen === 'shelf',
@@ -759,8 +792,8 @@ class Component extends DCLogic {
       openRecord: () => this.setState({ recordOpen: true }),
       closeRecord: () => this.setState({ recordOpen: false }),
       recFinished: finished,
-      recReading: Object.keys(s.shelf).filter(k => s.shelf[k] === 'reading').length,
-      recWant: Object.keys(s.shelf).filter(k => s.shelf[k] === 'want').length,
+      recReading: Object.keys(s.shelf).filter(k => s.shelf[k] === 'reading').length + s.custom.filter(c => c.v === 'reading').length,
+      recWant: Object.keys(s.shelf).filter(k => s.shelf[k] === 'want').length + s.custom.filter(c => c.v === 'want').length,
       recCelebration: this.celebration(finished, goal),
       downloadRecord: () => {
         const html = this.recordHTML(s, books, finished, goal);
@@ -779,13 +812,40 @@ class Component extends DCLogic {
         setTimeout(() => { w.focus(); w.print(); }, 350);
       },
 
+      addOpen: s.addOpen,
+      addClosed: !s.addOpen,
+      addTitle: s.addTitle,
+      addAuthor: s.addAuthor,
+      onAddTitle: (e) => this.setState({ addTitle: e.target.value }),
+      onAddAuthor: (e) => this.setState({ addAuthor: e.target.value }),
+      openAdd: () => this.setState({ addOpen: true }),
+      cancelAdd: () => this.setState({ addOpen: false, addTitle: '', addAuthor: '' }),
+      addStatusChips: SHELF_DEFS.map(d => ({
+        label: d.short || d.label,
+        style: 'border-radius:3px;font-size:11.5px;font-weight:700;padding:7px 10px;cursor:pointer;' +
+          (s.addStatus === d.v ? 'border:1px solid #002855;background:#002855;color:#fff;' : 'border:1px solid #d3ccbe;background:#fff;color:#454b56;'),
+        on: () => this.setState({ addStatus: d.v })
+      })),
+      saveAdd: () => {
+        const t = s.addTitle.trim();
+        if (!t) return;
+        saveCustom(s.custom.concat([{ cid: 'c' + Date.now(), t, a: s.addAuthor.trim(), v: s.addStatus }]));
+        this.setState({ addOpen: false, addTitle: '', addAuthor: '' });
+      },
+
       goalLabel: 'Books finished this year',
       goalCount: finished + ' / ' + goal,
       goalBarStyle: 'height:100%;border-radius:20px;background:#9c1918;width:' + Math.min(100, (finished / goal) * 100) + '%;',
       shelfGroups: SHELF_DEFS.map(d => {
         const items = Object.keys(s.shelf).filter(k => s.shelf[k] === d.v)
           .map(k => books.find(b => b.id === Number(k))).filter(Boolean)
-          .map(b => ({ t: b.t, on: () => this.setState({ sel: b.id }), remove: () => setShelf(b.id, d.v) }));
+          .map(b => ({ t: b.t, own: false, on: () => this.setState({ sel: b.id }), remove: () => setShelf(b.id, d.v) }))
+          .concat(s.custom.filter(c => c.v === d.v).map(c => ({
+            t: c.a ? c.t + ' — ' + c.a : c.t,
+            own: true,
+            on: () => {},
+            remove: () => saveCustom(s.custom.filter(x => x.cid !== c.cid))
+          })));
         return { label: d.label, items, empty: items.length === 0, hint: d.hint };
       }),
 
