@@ -1,7 +1,8 @@
 <!DOCTYPE html>
-<html>
+<html lang="en">
 <head>
 <meta charset="utf-8">
+<title>Independent Reading — Byram Hills Central School District</title>
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <script src="./support.js"></script>
 </head>
@@ -25,12 +26,14 @@
   ::-webkit-scrollbar-thumb { background: #cfc8bb; border-radius: 10px; }
   ::-webkit-scrollbar-track { background: transparent; }
   @keyframes fadeUp { from { opacity: 0; transform: translateY(10px); } to { opacity: 1; transform: none; } }
+  :focus-visible { outline: 3px solid #9c1918; outline-offset: 2px; box-shadow: 0 0 0 6px rgba(255,255,255,0.9); }
+  input:focus-visible, textarea:focus-visible { outline-offset: 0; box-shadow: 0 0 0 3px rgba(156,25,24,0.18); }
 </style>
 </helmet>
 
 <!-- ================= LANDING ================= -->
 <sc-if value="{{ isLanding }}" hint-placeholder-val="{{ true }}">
-<div style="min-height: 100vh; display: flex; flex-direction: column; background: #002855">
+<main style="min-height: 100vh; display: flex; flex-direction: column; background: #002855">
   <div style="background: #002855; padding: 26px 8vw 30px">
     <div style="display: flex; align-items: center; justify-content: space-between; gap: 40px; margin-bottom: 18px; flex-wrap: wrap">
       <div style="display: flex; align-items: center; gap: 22px; flex-wrap: wrap">
@@ -126,12 +129,12 @@
   <div style="padding: 26px 8vw 30px; display: flex; justify-content: flex-end">
     <div style="font-size: 12.5px; line-height: 1.5; color: #7f95b0">Updated {{ lastUpdated }}</div>
   </div>
-</div>
+</main>
 </sc-if>
 
 <!-- ================= GRADE GATE ================= -->
 <sc-if value="{{ isGrade }}" hint-placeholder-val="{{ false }}">
-<div style="min-height: 100vh; background: #f6f2ea; display: flex; flex-direction: column">
+<main style="min-height: 100vh; background: #f6f2ea; display: flex; flex-direction: column">
   <div style="background: #002855; padding: 22px 8vw; display: flex; align-items: center; justify-content: space-between">
     <div style="display: flex; align-items: center; gap: 13px">
       <sc-if value="{{ showShield }}" hint-placeholder-val="{{ false }}">
@@ -165,12 +168,12 @@
       </sc-for>
     </div>
   </div>
-</div>
+</main>
 </sc-if>
 
 <!-- ================= SHELF ================= -->
 <sc-if value="{{ isShelf }}" hint-placeholder-val="{{ false }}">
-<div style="min-height: 100vh; display: flex; flex-direction: column; background: #fdfcfa">
+<main style="min-height: 100vh; display: flex; flex-direction: column; background: #fdfcfa">
   <div style="background: #002855; padding: 15px 30px; display: flex; align-items: center; justify-content: space-between; gap: 24px; flex-wrap: wrap">
     <div style="display: flex; align-items: center; gap: 14px">
       <sc-if value="{{ showShield }}" hint-placeholder-val="{{ false }}">
@@ -237,7 +240,7 @@
   <div style="padding: 14px 30px; background: #f6f2ea; border-bottom: 1px solid #e2ddd3; display: flex; align-items: center; gap: 16px; flex-wrap: wrap">
     <div style="position: relative; flex: 1; min-width: 260px; max-width: 520px">
       <input value="{{ q }}" onInput="{{ onQ }}" placeholder="Search a title, an author, or a word like &quot;survival&quot;" style="width: 100%; padding: 11px 14px 11px 38px; border: 1px solid #d3ccbe; border-radius: 4px; background: #fff; font-size: 14.5px; color: #101418; outline: none" />
-      <span style="position: absolute; left: 13px; top: 11px; color: #9aa1ac; font-size: 15px">⌕</span>
+      <span style="position: absolute; left: 13px; top: 11px; color: #5f6672; font-size: 15px">⌕</span>
     </div>
     <div style="font-size: 13.5px; color: #5f6672; font-variant-numeric: tabular-nums">{{ resultLabel }}</div>
     <button onClick="{{ resetAll }}" style="border: none; background: none; color: #9c1918; font-size: 13px; font-weight: 600; padding: 4px 2px; text-decoration: underline; text-underline-offset: 3px">Clear all</button>
@@ -285,7 +288,7 @@
                 <span style="{{ b.badgeStyle }}">{{ b.badge }}</span>
               </div>
               <div style="font-family: 'Source Serif 4', Georgia, serif; font-size: 13.5px; line-height: 1.28; color: #101418; margin-top: 9px; font-weight: 600">{{ b.t }}</div>
-              <div style="font-size: 11.5px; color: #7a808b; margin-top: 2px">{{ b.a }}</div>
+              <div style="font-size: 11.5px; color: #5f6672; margin-top: 2px">{{ b.a }}</div>
             </div>
           </sc-for>
         </div>
@@ -308,7 +311,7 @@
             <div style="{{ selCoverStyle }}"></div>
             <div style="flex: 1">
               <div style="font-family: 'Source Serif 4', Georgia, serif; font-size: 20px; line-height: 1.18; color: #101418; font-weight: 600">{{ selT }}</div>
-              <div style="font-size: 13px; color: #7a808b; margin-top: 4px">{{ selA }}</div>
+              <div style="font-size: 13px; color: #5f6672; margin-top: 4px">{{ selA }}</div>
               <div style="font-size: 11.5px; color: #002855; margin-top: 9px; font-weight: 700; letter-spacing: 0.04em; text-transform: uppercase; line-height: 1.4">{{ selMeta }}</div>
             </div>
           </div>
@@ -332,7 +335,7 @@
                 <div style="{{ s.coverStyle }}"></div>
                 <div style="flex: 1">
                   <div style="font-family: 'Source Serif 4', Georgia, serif; font-size: 13.5px; line-height: 1.25; color: #101418; font-weight: 600">{{ s.t }}</div>
-                  <div style="font-size: 11.5px; color: #7a808b; margin-top: 1px">{{ s.a }}</div>
+                  <div style="font-size: 11.5px; color: #5f6672; margin-top: 1px">{{ s.a }}</div>
                   <div style="font-size: 11px; color: #9c1918; margin-top: 4px; line-height: 1.35">{{ s.why }}</div>
                 </div>
               </div>
@@ -343,14 +346,14 @@
       <sc-if value="{{ noSel }}" hint-placeholder-val="{{ true }}">
         <div style="padding: 44px 26px; text-align: center; border-bottom: 1px solid #e2ddd3">
           <div style="font-family: 'Source Serif 4', Georgia, serif; font-size: 17.5px; color: #101418; line-height: 1.35">Pick any cover to read what it's about.</div>
-          <div style="font-size: 13px; color: #7a808b; margin-top: 9px; line-height: 1.55">You'll also see similar titles, and why they match.</div>
+          <div style="font-size: 13px; color: #5f6672; margin-top: 9px; line-height: 1.55">You'll also see similar titles, and why they match.</div>
         </div>
       </sc-if>
 
       <div style="padding: 24px">
         <div style="display: flex; align-items: baseline; justify-content: space-between; margin-bottom: 13px">
           <div style="font-size: 10.5px; letter-spacing: 0.14em; text-transform: uppercase; color: #9c1918; font-weight: 700">My shelf</div>
-          <div style="font-size: 11.5px; color: #7a808b">saved on this device</div>
+          <div style="font-size: 11.5px; color: #5f6672">saved on this device</div>
         </div>
         <button onClick="{{ openRecord }}" style="width: 100%; margin-bottom: 16px; background: #9c1918; border: none; color: #fff; font-size: 13px; font-weight: 700; padding: 11px 14px; border-radius: 4px; text-align: center; cursor: pointer" style-hover="background: #86100f">★  Save my reading record</button>
         <sc-if value="{{ addClosed }}" hint-placeholder-val="{{ true }}">
@@ -368,14 +371,14 @@
             </div>
             <div style="display: flex; gap: 7px; margin-top: 2px">
               <button onClick="{{ saveAdd }}" style="flex: 1; background: #002855; border: none; color: #fff; font-size: 12.5px; font-weight: 700; padding: 9px 12px; border-radius: 4px; cursor: pointer" style-hover="background: #013a75">Add to my shelf</button>
-              <button onClick="{{ cancelAdd }}" style="background: none; border: 1px solid #d3ccbe; color: #7a808b; font-size: 12.5px; font-weight: 700; padding: 9px 12px; border-radius: 4px; cursor: pointer" style-hover="color: #9c1918">Cancel</button>
+              <button onClick="{{ cancelAdd }}" style="background: none; border: 1px solid #d3ccbe; color: #5f6672; font-size: 12.5px; font-weight: 700; padding: 9px 12px; border-radius: 4px; cursor: pointer" style-hover="color: #9c1918">Cancel</button>
             </div>
           </div>
         </sc-if>
         <div style="background: #fff; border: 1px solid #e2ddd3; border-radius: 5px; padding: 15px 16px; margin-bottom: 18px">
           <div style="display: flex; justify-content: space-between; align-items: baseline; font-size: 13px; color: #454b56">
             <span style="font-weight: 600">{{ goalLabel }}</span>
-            <span style="font-variant-numeric: tabular-nums; color: #7a808b">{{ goalCount }}</span>
+            <span style="font-variant-numeric: tabular-nums; color: #5f6672">{{ goalCount }}</span>
           </div>
           <div style="height: 7px; background: #eae4d9; border-radius: 20px; margin-top: 10px; overflow: hidden">
             <div style="{{ goalBarStyle }}"></div>
@@ -386,7 +389,7 @@
             <div>
               <div style="font-size: 12px; font-weight: 700; color: #002855; margin-bottom: 7px">{{ grp.label }}</div>
               <sc-if value="{{ grp.empty }}" hint-placeholder-val="{{ true }}">
-                <div style="font-size: 12.5px; color: #9aa1ac; font-style: italic">{{ grp.hint }}</div>
+                <div style="font-size: 12.5px; color: #5f6672; font-style: italic">{{ grp.hint }}</div>
               </sc-if>
               <div style="display: flex; flex-direction: column; gap: 5px">
                 <sc-for list="{{ grp.items }}" as="it" hint-placeholder-count="0">
@@ -395,7 +398,7 @@
                     <sc-if value="{{ it.own }}" hint-placeholder-val="{{ false }}">
                       <span style="font-size: 9.5px; letter-spacing: 0.08em; text-transform: uppercase; color: #9c1918; border: 1px solid #e3cbca; background: #fbf1f0; border-radius: 2px; padding: 2px 4px; font-weight: 700; flex: 0 0 auto">Mine</span>
                     </sc-if>
-                    <button onClick="{{ it.remove }}" style="border: none; background: none; color: #b0b6c0; font-size: 15px; line-height: 1; padding: 2px 4px" style-hover="color: #9c1918">×</button>
+                    <button onClick="{{ it.remove }}" style="border: none; background: none; color: #5f6672; font-size: 15px; line-height: 1; padding: 2px 4px" style-hover="color: #9c1918">×</button>
                   </div>
                 </sc-for>
               </div>
@@ -415,11 +418,11 @@
     </div>
     <div style="flex-basis: 100%; font-size: 13px; line-height: 1.55; color: #9fb3cc; border-top: 1px solid rgba(255,255,255,0.16); padding-top: 16px; margin-top: 4px">Questions about Independent Reading? Email <a href="mailto:dsmith@byramhills.net" style="color: #fff">dsmith@byramhills.net</a></div>
   </div>
-</div>
+</main>
 </sc-if>
 
 <sc-if value="{{ recordOpen }}" hint-placeholder-val="{{ false }}">
-  <div style="position: fixed; inset: 0; background: rgba(6,14,26,0.72); z-index: 60; display: flex; align-items: flex-start; justify-content: center; overflow: auto; padding: 36px 20px">
+  <div role="dialog" aria-modal="true" aria-label="My Reading Record" style="position: fixed; inset: 0; background: rgba(6,14,26,0.72); z-index: 60; display: flex; align-items: flex-start; justify-content: center; overflow: auto; padding: 36px 20px">
     <div style="width: 100%; max-width: 620px; background: #fdfcfa; border-radius: 6px; box-shadow: 0 40px 90px -30px rgba(0,0,0,0.6); overflow: hidden; animation: fadeUp 220ms ease-out">
       <div style="background: #002855; padding: 18px 24px; display: flex; align-items: center; justify-content: space-between; gap: 16px">
         <div style="color: #fff; font-family: 'Source Serif 4', Georgia, serif; font-size: 18px; font-weight: 600">Your reading record</div>
@@ -433,15 +436,15 @@
           <div style="display: flex; gap: 26px; flex-wrap: wrap; margin-bottom: 16px">
             <div>
               <div style="font-family: 'Source Serif 4', Georgia, serif; font-size: 34px; line-height: 1; color: #9c1918; font-weight: 600">{{ recFinished }}</div>
-              <div style="font-size: 11.5px; letter-spacing: 0.1em; text-transform: uppercase; color: #7a808b; font-weight: 700; margin-top: 5px">Finished</div>
+              <div style="font-size: 11.5px; letter-spacing: 0.1em; text-transform: uppercase; color: #5f6672; font-weight: 700; margin-top: 5px">Finished</div>
             </div>
             <div>
               <div style="font-family: 'Source Serif 4', Georgia, serif; font-size: 34px; line-height: 1; color: #002855; font-weight: 600">{{ recReading }}</div>
-              <div style="font-size: 11.5px; letter-spacing: 0.1em; text-transform: uppercase; color: #7a808b; font-weight: 700; margin-top: 5px">Reading now</div>
+              <div style="font-size: 11.5px; letter-spacing: 0.1em; text-transform: uppercase; color: #5f6672; font-weight: 700; margin-top: 5px">Reading now</div>
             </div>
             <div>
               <div style="font-family: 'Source Serif 4', Georgia, serif; font-size: 34px; line-height: 1; color: #002855; font-weight: 600">{{ recWant }}</div>
-              <div style="font-size: 11.5px; letter-spacing: 0.1em; text-transform: uppercase; color: #7a808b; font-weight: 700; margin-top: 5px">Up next</div>
+              <div style="font-size: 11.5px; letter-spacing: 0.1em; text-transform: uppercase; color: #5f6672; font-weight: 700; margin-top: 5px">Up next</div>
             </div>
           </div>
           <div style="font-size: 13.5px; line-height: 1.55; color: #454b56; text-wrap: pretty">{{ recCelebration }}</div>
@@ -450,7 +453,7 @@
           <button onClick="{{ downloadRecord }}" style="flex: 1; min-width: 190px; background: #9c1918; border: none; color: #fff; font-size: 13.5px; font-weight: 700; padding: 13px 16px; border-radius: 4px; cursor: pointer" style-hover="background: #86100f">Download my record</button>
           <button onClick="{{ printRecord }}" style="flex: 1; min-width: 150px; background: #fff; border: 1px solid #002855; color: #002855; font-size: 13.5px; font-weight: 700; padding: 13px 16px; border-radius: 4px; cursor: pointer" style-hover="background: #eef2f7">Print it</button>
         </div>
-        <div style="font-size: 12px; color: #9aa1ac; margin-top: 12px; line-height: 1.5">Downloads a single file you can reopen any time — it lists every title so you can rebuild your shelf if this browser forgets it.</div>
+        <div style="font-size: 12px; color: #5f6672; margin-top: 12px; line-height: 1.5">Downloads a single file you can reopen any time — it lists every title so you can rebuild your shelf if this browser forgets it.</div>
       </div>
     </div>
   </div>
@@ -576,11 +579,11 @@ class Component extends DCLogic {
       '<div style="padding:34px 40px">' +
       '<div style="display:flex;gap:34px;flex-wrap:wrap;border-bottom:2px solid #9c1918;padding-bottom:24px">' +
       [['Finished', finished, '#9c1918'], ['Reading now', Object.keys(s.shelf).filter(k => s.shelf[k] === 'reading').length + (s.custom || []).filter(c => c.v === 'reading').length, '#002855'], ['Up next', Object.keys(s.shelf).filter(k => s.shelf[k] === 'want').length + (s.custom || []).filter(c => c.v === 'want').length, '#002855']]
-        .map(([l, n, c]) => '<div><div style="font:600 40px/1 Georgia,serif;color:' + c + '">' + n + '</div><div style="font:700 11px/1 system-ui;letter-spacing:.1em;text-transform:uppercase;color:#7a808b;margin-top:6px">' + l + '</div></div>').join('') +
+        .map(([l, n, c]) => '<div><div style="font:600 40px/1 Georgia,serif;color:' + c + '">' + n + '</div><div style="font:700 11px/1 system-ui;letter-spacing:.1em;text-transform:uppercase;color:#5f6672;margin-top:6px">' + l + '</div></div>').join('') +
       '</div>' +
       '<p style="font:400 15px/1.6 system-ui;color:#454b56;margin:22px 0 0">' + esc(this.celebration(finished, goal)) + '</p>' +
       group('done', 'Books I finished') + group('reading', 'Reading now') + group('want', 'Want to read') +
-      '<p style="font:400 12.5px/1.6 system-ui;color:#9aa1ac;margin:38px 0 0;border-top:1px solid #e2ddd3;padding-top:16px">Keep this file. If your browser forgets your shelf, you can add these titles back from the Independent Reading site.</p>' +
+      '<p style="font:400 12.5px/1.6 system-ui;color:#5f6672;margin:38px 0 0;border-top:1px solid #e2ddd3;padding-top:16px">Keep this file. If your browser forgets your shelf, you can add these titles back from the Independent Reading site.</p>' +
       '</div></div></body></html>';
   }
 
