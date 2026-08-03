@@ -31,6 +31,8 @@
 </style>
 </helmet>
 
+<a href="#main-content" style="position: absolute; left: -9999px; top: 0; z-index: 200; background: #fff; color: #002855; padding: 13px 20px; font-size: 14px; font-weight: 700; border: 2px solid #9c1918; border-top: none; border-radius: 0 0 4px 0; text-decoration: none" style-focus="left: 0">Skip to main content</a>
+
 <!-- ================= LANDING ================= -->
 <sc-if value="{{ isLanding }}" hint-placeholder-val="{{ true }}">
 <main style="min-height: 100vh; display: flex; flex-direction: column; background: #002855">
@@ -38,8 +40,8 @@
     <div style="display: flex; align-items: center; justify-content: space-between; gap: 40px; margin-bottom: 18px; flex-wrap: wrap">
       <div style="display: flex; align-items: center; gap: 22px; flex-wrap: wrap">
       <div style="display: flex; align-items: center; gap: 12px">
-        <a href="https://byramhills.org/hcc" target="_blank" rel="noopener" style="height: 52px; width: 50px; flex: 0 0 50px; background-image: url(assets/shield-hcc.png); background-size: contain; background-position: center; background-repeat: no-repeat; display: block; opacity: 1; transition: opacity 140ms" style-hover="opacity: 0.78" aria-label="H.C. Crittenden Middle School"></a>
-        <a href="https://byramhills.org/bhhs" target="_blank" rel="noopener" style="height: 52px; width: 50px; flex: 0 0 50px; background-image: url(assets/shield-bhhs.png); background-size: contain; background-position: center; background-repeat: no-repeat; display: block; opacity: 1; transition: opacity 140ms" style-hover="opacity: 0.78" aria-label="Byram Hills High School"></a>
+        <a href="https://byramhills.org/hcc" target="_blank" rel="noopener" style="height: 52px; width: 50px; flex: 0 0 50px; background-image: url(assets/shield-hcc.png); background-size: contain; background-position: center; background-repeat: no-repeat; display: block; opacity: 1; transition: opacity 140ms" style-hover="opacity: 0.78" aria-label="H.C. Crittenden Middle School (opens in a new tab)"></a>
+        <a href="https://byramhills.org/bhhs" target="_blank" rel="noopener" style="height: 52px; width: 50px; flex: 0 0 50px; background-image: url(assets/shield-bhhs.png); background-size: contain; background-position: center; background-repeat: no-repeat; display: block; opacity: 1; transition: opacity 140ms" style-hover="opacity: 0.78" aria-label="Byram Hills High School (opens in a new tab)"></a>
       </div>
       <span style="color: #fff; font-size: 14px; letter-spacing: 0.13em; text-transform: uppercase; font-weight: 700">Byram Hills Central School District</span>
       </div>
@@ -76,7 +78,7 @@
         <div style="display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 18px; max-width: 470px; margin-bottom: 14px">
           <div style="display: flex; flex-direction: column; gap: 14px">
             <div style="width: 100%; height: 46px; display: flex; align-items: center; justify-content: center">
-              <svg viewBox="0 0 44 40" width="44" height="40" fill="none" stroke="#ffffff" strokeWidth="1.8" strokeLinecap="round" strokeLinejoin="round">
+              <svg viewBox="0 0 44 40" width="44" height="40" fill="none" stroke="#ffffff" strokeWidth="1.8" strokeLinecap="round" strokeLinejoin="round" aria-hidden="true" focusable="false">
                 <path d="M21 6.5c-2.2-2.4-6.1-2.6-8.4-.3-1 1-1.5 2.3-1.5 3.6-2.5.4-4.4 2.6-4.4 5.2 0 1 .3 2 .8 2.8-1.6 1-2.6 2.7-2.6 4.7 0 2.2 1.3 4.1 3.2 5-.1.4-.1.8-.1 1.2 0 3.1 2.5 5.6 5.6 5.6 1.5 0 2.9-.6 3.9-1.6 1 1.2 2 1.9 3.5 2.2V6.5z" />
                 <path d="M23 6.5c2.2-2.4 6.1-2.6 8.4-.3 1 1 1.5 2.3 1.5 3.6 2.5.4 4.4 2.6 4.4 5.2 0 1-.3 2-.8 2.8 1.6 1 2.6 2.7 2.6 4.7 0 2.2-1.3 4.1-3.2 5 .1.4.1.8.1 1.2 0 3.1-2.5 5.6-5.6 5.6-1.5 0-2.9-.6-3.9-1.6-1 1.2-2 1.9-3.5 2.2V6.5z" />
                 <path d="M22 6.5v27.5" stroke="#9c1918" strokeWidth="2" />
@@ -87,7 +89,7 @@
           </div>
           <div style="display: flex; flex-direction: column; gap: 14px">
             <div style="width: 100%; height: 46px; display: flex; align-items: center; justify-content: center">
-              <svg viewBox="0 0 44 40" width="44" height="40" fill="none" stroke="#ffffff" strokeWidth="1.8" strokeLinecap="round" strokeLinejoin="round">
+              <svg viewBox="0 0 44 40" width="44" height="40" fill="none" stroke="#ffffff" strokeWidth="1.8" strokeLinecap="round" strokeLinejoin="round" aria-hidden="true" focusable="false">
                 <path d="M22 22.8S12.6 17.3 12.6 11.7c0-2.8 2.1-4.7 4.6-4.7 1.9 0 3.5 1.2 4.8 2.9 1.3-1.7 2.9-2.9 4.8-2.9 2.5 0 4.6 1.9 4.6 4.7 0 5.6-9.4 11.1-9.4 11.1z" stroke="#9c1918" strokeWidth="2" />
                 <path d="M5.6 25.4c-1.3 2.5-.8 5.6 1.3 7.6 1.8 1.7 4.2 2.6 6.7 2.6h16.8c2.5 0 4.9-.9 6.7-2.6 2.1-2 2.6-5.1 1.3-7.6" />
                 <path d="M9.4 27c1.3-1.9 3.4-2.8 5.4-2.6M34.6 27c-1.3-1.9-3.4-2.8-5.4-2.6" />
@@ -98,7 +100,7 @@
           </div>
           <div style="display: flex; flex-direction: column; gap: 14px">
             <div style="width: 100%; height: 46px; display: flex; align-items: center; justify-content: center">
-              <svg viewBox="0 0 44 40" width="44" height="40" fill="none" stroke="#ffffff" strokeWidth="1.8" strokeLinecap="round" strokeLinejoin="round">
+              <svg viewBox="0 0 44 40" width="44" height="40" fill="none" stroke="#ffffff" strokeWidth="1.8" strokeLinecap="round" strokeLinejoin="round" aria-hidden="true" focusable="false">
                 <path d="M14.6 36.5v-5.1c-3.6-2.7-5.9-7-5.9-11.8C8.7 11.5 14.9 5.3 22.5 5.3S36.3 11.5 36.3 19.6c0 3.5-1.3 6.7-3.4 9.2-.6.7-.9 1.6-.9 2.5v5.2" />
                 <path d="M15.2 19.6c2-2.8 4.5-4.2 7.3-4.2s5.3 1.4 7.3 4.2c-2 2.8-4.5 4.2-7.3 4.2s-5.3-1.4-7.3-4.2z" />
                 <circle cx="22.5" cy="19.6" r="2.4" fill="#9c1918" stroke="none" />
@@ -112,7 +114,7 @@
     </div>
   </div>
 
-  <div style="{{ tileGridStyle }}">
+  <div id="main-content" tabindex="-1" style="{{ tileGridStyle }}">
     <sc-for list="{{ schoolCards }}" as="s" hint-placeholder-count="2">
       <button onClick="{{ s.on }}" style="{{ s.tileStyle }}">
         <span style="{{ s.tileScrim }}"></span>
@@ -138,7 +140,7 @@
   <div style="background: #002855; padding: 22px 8vw; display: flex; align-items: center; justify-content: space-between">
     <div style="display: flex; align-items: center; gap: 13px">
       <sc-if value="{{ showShield }}" hint-placeholder-val="{{ false }}">
-        <a href="{{ shieldHref }}" target="_blank" rel="noopener" style="{{ shieldStyle }}" style-hover="opacity: 0.78"></a>
+        <a href="{{ shieldHref }}" target="_blank" rel="noopener" aria-label="{{ shieldLabel }}" style="{{ shieldStyle }}" style-hover="opacity: 0.78"></a>
       </sc-if>
       <sc-if value="{{ showFallbackMark }}" hint-placeholder-val="{{ false }}">
         <div style="width: 30px; height: 30px; border: 2px solid #fff; border-radius: 2px; display: flex; align-items: center; justify-content: center; font-family: 'Source Serif 4', serif; color: #fff; font-size: 15px; font-weight: 700">B</div>
@@ -147,7 +149,7 @@
     </div>
     <button onClick="{{ goLanding }}" style="background: rgba(255,255,255,0.12); border: 1px solid rgba(255,255,255,0.35); color: #fff; font-size: 13px; font-weight: 700; padding: 8px 14px; border-radius: 3px" style-hover="background: rgba(255,255,255,0.22)">← Not my school</button>
   </div>
-  <div style="flex: 1; display: flex; flex-direction: column; justify-content: center; padding: 64px 8vw 84px; max-width: 1240px; animation: fadeUp 260ms ease-out">
+  <div id="main-content" tabindex="-1" style="flex: 1; display: flex; flex-direction: column; justify-content: center; padding: 64px 8vw 84px; max-width: 1240px; animation: fadeUp 260ms ease-out">
     <div style="font-size: 11px; letter-spacing: 0.16em; text-transform: uppercase; color: #9c1918; font-weight: 700; margin-bottom: 14px">Choose one</div>
     <h2 style="font-family: 'Source Serif 4', Georgia, serif; font-size: 46px; line-height: 1.08; margin: 0 0 12px; color: #101418; font-weight: 600; letter-spacing: -0.015em; max-width: 760px">Select your grade level…</h2>
     <p style="margin: 0 0 40px; font-size: 16.5px; line-height: 1.55; color: #5f6672; max-width: 540px; text-wrap: pretty">Your teachers recommend different titles for each grade, so this makes sure you only see the ones meant for you.</p>
@@ -177,7 +179,7 @@
   <div style="background: #002855; padding: 15px 30px; display: flex; align-items: center; justify-content: space-between; gap: 24px; flex-wrap: wrap">
     <div style="display: flex; align-items: center; gap: 14px">
       <sc-if value="{{ showShield }}" hint-placeholder-val="{{ false }}">
-        <a href="{{ shieldHref }}" target="_blank" rel="noopener" style="{{ shieldStyle }}" style-hover="opacity: 0.78"></a>
+        <a href="{{ shieldHref }}" target="_blank" rel="noopener" aria-label="{{ shieldLabel }}" style="{{ shieldStyle }}" style-hover="opacity: 0.78"></a>
       </sc-if>
       <sc-if value="{{ showFallbackMark }}" hint-placeholder-val="{{ false }}">
         <div style="width: 32px; height: 32px; border: 2px solid #fff; border-radius: 2px; display: flex; align-items: center; justify-content: center; font-family: 'Source Serif 4', serif; color: #fff; font-size: 16px; font-weight: 700">B</div>
@@ -203,8 +205,8 @@
     <sc-if value="{{ showEbooks }}" hint-placeholder-val="{{ true }}">
       <div style="display: flex; flex-direction: column; gap: 7px; align-items: flex-end">
         <div style="display: flex; align-items: center; gap: 8px; flex-wrap: wrap">
-          <a href="https://search.follettsoftware.com/metasearch/ui/47192" target="_blank" rel="noopener" style="background: rgba(255,255,255,0.12); border: 1px solid rgba(255,255,255,0.35); border-radius: 3px; padding: 7px 12px; font-size: 12.5px; font-weight: 700; color: #fff; text-decoration: none; white-space: nowrap" style-hover="background: rgba(255,255,255,0.24)">FollettShelf eBooks →</a>
-          <a href="https://soraapp.com/welcome/login/200158" target="_blank" rel="noopener" style="background: rgba(255,255,255,0.12); border: 1px solid rgba(255,255,255,0.35); border-radius: 3px; padding: 7px 12px; font-size: 12.5px; font-weight: 700; color: #fff; text-decoration: none; white-space: nowrap" style-hover="background: rgba(255,255,255,0.24)">Sora app →</a>
+          <a href="https://search.follettsoftware.com/metasearch/ui/47192" target="_blank" rel="noopener" style="background: rgba(255,255,255,0.12); border: 1px solid rgba(255,255,255,0.35); border-radius: 3px; padding: 7px 12px; font-size: 12.5px; font-weight: 700; color: #fff; text-decoration: none; white-space: nowrap" aria-label="FollettShelf eBooks (opens in a new tab)" style-hover="background: rgba(255,255,255,0.24)">FollettShelf eBooks ↗</a>
+          <a href="https://soraapp.com/welcome/login/200158" target="_blank" rel="noopener" style="background: rgba(255,255,255,0.12); border: 1px solid rgba(255,255,255,0.35); border-radius: 3px; padding: 7px 12px; font-size: 12.5px; font-weight: 700; color: #fff; text-decoration: none; white-space: nowrap" aria-label="Sora app (opens in a new tab)" style-hover="background: rgba(255,255,255,0.24)">Sora app ↗</a>
         </div>
         <div style="font-size: 12px; line-height: 1.5; color: #9fb3cc; text-align: right; max-width: 340px">Sign in with your school username and password — quantities are limited. Trouble? Email <a href="mailto:bbarthelmes@byramhills.net" style="color: #fff">bbarthelmes@byramhills.net</a></div>
       </div>
@@ -237,9 +239,9 @@
     </div>
   </sc-if>
 
-  <div style="padding: 14px 30px; background: #f6f2ea; border-bottom: 1px solid #e2ddd3; display: flex; align-items: center; gap: 16px; flex-wrap: wrap">
+  <div id="main-content" tabindex="-1" style="padding: 14px 30px; background: #f6f2ea; border-bottom: 1px solid #e2ddd3; display: flex; align-items: center; gap: 16px; flex-wrap: wrap">
     <div style="position: relative; flex: 1; min-width: 260px; max-width: 520px">
-      <input value="{{ q }}" onInput="{{ onQ }}" placeholder="Search a title, an author, or a word like &quot;survival&quot;" style="width: 100%; padding: 11px 14px 11px 38px; border: 1px solid #d3ccbe; border-radius: 4px; background: #fff; font-size: 14.5px; color: #101418; outline: none" />
+      <input value="{{ q }}" onInput="{{ onQ }}" placeholder="Search a title, an author, or a word like &quot;survival&quot;" style="width: 100%; padding: 11px 14px 11px 38px; border: 1px solid #d3ccbe; border-radius: 4px; background: #fff; font-size: 14.5px; color: #101418" />
       <span style="position: absolute; left: 13px; top: 11px; color: #5f6672; font-size: 15px">⌕</span>
     </div>
     <div style="font-size: 13.5px; color: #5f6672; font-variant-numeric: tabular-nums">{{ resultLabel }}</div>
@@ -362,8 +364,8 @@
         <sc-if value="{{ addOpen }}" hint-placeholder-val="{{ false }}">
           <div style="background: #fff; border: 1px solid #e2ddd3; border-radius: 5px; padding: 15px 16px; margin-bottom: 16px; display: flex; flex-direction: column; gap: 9px">
             <div style="font-size: 11.5px; letter-spacing: 0.1em; text-transform: uppercase; color: #9c1918; font-weight: 700">Add your own book</div>
-            <input value="{{ addTitle }}" onInput="{{ onAddTitle }}" placeholder="Title" style="width: 100%; padding: 9px 11px; border: 1px solid #d3ccbe; border-radius: 4px; font-size: 13.5px; color: #101418; outline: none" />
-            <input value="{{ addAuthor }}" onInput="{{ onAddAuthor }}" placeholder="Author (optional)" style="width: 100%; padding: 9px 11px; border: 1px solid #d3ccbe; border-radius: 4px; font-size: 13.5px; color: #101418; outline: none" />
+            <input value="{{ addTitle }}" onInput="{{ onAddTitle }}" placeholder="Title" style="width: 100%; padding: 9px 11px; border: 1px solid #d3ccbe; border-radius: 4px; font-size: 13.5px; color: #101418" />
+            <input value="{{ addAuthor }}" onInput="{{ onAddAuthor }}" placeholder="Author (optional)" style="width: 100%; padding: 9px 11px; border: 1px solid #d3ccbe; border-radius: 4px; font-size: 13.5px; color: #101418" />
             <div style="display: flex; gap: 6px">
               <sc-for list="{{ addStatusChips }}" as="c" hint-placeholder-count="3">
                 <button onClick="{{ c.on }}" style="{{ c.style }}">{{ c.label }}</button>
@@ -413,7 +415,7 @@
     <span style="font-size: 10.5px; letter-spacing: 0.14em; text-transform: uppercase; color: #9fb3cc; font-weight: 700; flex: 0 0 auto">Looking for more</span>
     <div style="display: flex; align-items: center; gap: 8px; flex-wrap: wrap">
       <sc-for list="{{ extLinks }}" as="lk" hint-placeholder-count="2">
-        <a href="{{ lk.href }}" target="_blank" rel="noopener" style="background: rgba(255,255,255,0.12); border: 1px solid rgba(255,255,255,0.35); border-radius: 3px; padding: 7px 12px; font-size: 12.5px; font-weight: 700; color: #fff; text-decoration: none; white-space: nowrap" style-hover="background: rgba(255,255,255,0.24)">{{ lk.label }} →</a>
+        <a href="{{ lk.href }}" target="_blank" rel="noopener" aria-label="{{ lk.aria }}" style="background: rgba(255,255,255,0.12); border: 1px solid rgba(255,255,255,0.35); border-radius: 3px; padding: 7px 12px; font-size: 12.5px; font-weight: 700; color: #fff; text-decoration: none; white-space: nowrap" style-hover="background: rgba(255,255,255,0.24)">{{ lk.label }} ↗</a>
       </sc-for>
     </div>
     <div style="flex-basis: 100%; font-size: 13px; line-height: 1.55; color: #9fb3cc; border-top: 1px solid rgba(255,255,255,0.16); padding-top: 16px; margin-top: 4px">Questions about Independent Reading? Email <a href="mailto:dsmith@byramhills.net" style="color: #fff">dsmith@byramhills.net</a></div>
@@ -431,7 +433,7 @@
       <div style="padding: 24px">
         <p style="margin: 0 0 18px; font-size: 14px; line-height: 1.55; color: #5f6672; text-wrap: pretty">Your shelf lives in this browser, so clearing your history or switching devices wipes it. Save a copy you can keep, print, or send to your teacher.</p>
         <label style="display: block; font-size: 10.5px; letter-spacing: 0.14em; text-transform: uppercase; color: #9c1918; font-weight: 700; margin-bottom: 7px">Your name</label>
-        <input value="{{ recName }}" onInput="{{ onRecName }}" placeholder="First and last name" style="width: 100%; padding: 11px 13px; border: 1px solid #d3ccbe; border-radius: 4px; background: #fff; font-size: 14.5px; color: #101418; outline: none; margin-bottom: 20px" />
+        <input value="{{ recName }}" onInput="{{ onRecName }}" placeholder="First and last name" style="width: 100%; padding: 11px 13px; border: 1px solid #d3ccbe; border-radius: 4px; background: #fff; font-size: 14.5px; color: #101418; margin-bottom: 20px" />
         <div style="border: 1px solid #e2ddd3; background: #fff; border-radius: 5px; padding: 20px 22px; margin-bottom: 20px">
           <div style="display: flex; gap: 26px; flex-wrap: wrap; margin-bottom: 16px">
             <div>
@@ -771,6 +773,7 @@ class Component extends DCLogic {
       reqToggleLabel: s.reqOpen ? 'Hide required texts ▲' : 'In an advanced course? Required texts ▼',
       toggleReq: () => this.setState(st => ({ reqOpen: !st.reqOpen })),
       shieldHref: s.school === 'hs' ? 'https://byramhills.org/bhhs' : 'https://byramhills.org/hcc',
+      shieldLabel: (s.school === 'hs' ? 'Byram Hills High School' : 'H.C. Crittenden Middle School') + ' website (opens in a new tab)',
       showShield: hasShield,
       showFallbackMark: !hasShield,
       shieldStyle: 'height:42px;width:74px;flex:0 0 74px;background-image:url(' + SHIELDS[s.school === 'hs' ? 'hs' : 'ms'] +
@@ -903,7 +906,7 @@ class Component extends DCLogic {
         ? 'flex:1;min-width:260px;display:flex;align-items:baseline;gap:14px;'
         : 'flex:1;min-width:260px;display:flex;flex-direction:column;gap:5px;',
       showEbooks: s.school !== 'hs',
-      extLinks: s.school === 'hs' ? HS_LINKS : MS_LINKS,
+      extLinks: (s.school === 'hs' ? HS_LINKS : MS_LINKS).map(l => ({ ...l, aria: l.label + ' (opens in a new tab)' })),
       noteLead: s.school === 'hs'
         ? 'Complete a minimum of two independent reading selections over the summer.'
         : 'Read at least two books over the summer.',
